@@ -104,6 +104,7 @@ main {
     transition: .4s;
 }
 
+
 input:checked + .slider {
     background-color: hotpink;
 }
@@ -113,9 +114,9 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-    -webkit-transform: translateX(27px);
-    -ms-transform: translateX(27px);
-    transform: translateX(27px);
+    -webkit-transform: translateX(28px);
+    -ms-transform: translateX(28px);
+    transform: translateX(28px);
 }
 
 /* Rounded sliders */
@@ -147,3 +148,42 @@ input:checked + .slider:before {
     margin: 3% 0;
 }
 
+.buttonDiv {
+    display: flex;
+    justify-content: center;
+}
+
+button[type="button"] {
+    width: 15%;
+    font-size: 150%;
+    border-radius: 15px;
+    margin: 2%;
+    cursor: pointer;
+}
+
+button:focus, input[type="text"]:focus {
+    outline: none;
+}
+
+.feminineInput {
+    border: 1px solid hotpink;
+    color: hotpink;
+}
+
+.feminineInput::placeholder, .feminine {
+    color: #FF69B4;
+}
+
+.masculineInput {
+    border: 1px solid cornflowerblue;
+    color: cornflowerblue;
+}
+
+.masculineInput::placeholder, .masculine {
+    color: #63A8FF;
+}
+
+span.feminine,span.masculine{
+    font-size: 200%;
+    font-family: Avenir, serif;
+}
