@@ -1,5 +1,8 @@
 const http = require('http');
 const app = require('./src/app.js');
+const Game = require('./src/models/Game.js');
+
+app.initialize(new Game());
 
 const PORT = process.env.PORT || 8000;
 

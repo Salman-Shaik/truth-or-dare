@@ -7,25 +7,27 @@ const showMode = () => {
     showElement(modeDiv);
 };
 
-function createNameInput() {
+const createNameInput = () => {
     let nameInput = document.createElement("input");
     nameInput.type = "text";
     nameInput.placeholder = "Enter Name";
     nameInput.className = "nameInput masculineInput";
+    nameInput.pattern = "[A-Za-z]";
     return nameInput;
-}
+};
 
-function createGenderSwitch() {
+const createGenderSwitch = () => {
     let switchElem = document.createElement("label");
-    switchElem.className = "switch";
     let checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
     let span = document.createElement("span");
+    switchElem.className = "switch";
+    checkbox.type = "checkbox";
     span.className = "slider round";
     switchElem.appendChild(checkbox);
     switchElem.appendChild(span);
+    switchElem.onclick = changeInputColor;
     return switchElem;
-}
+};
 
 const createGenderSpan = () => {
     let span = document.createElement("span");
@@ -65,14 +67,14 @@ const addNameSection = () => {
     let namesDiv = document.querySelector(".names");
     let nameSection = createNameSection();
     let numberOfChilds = namesDiv.childElementCount;
-    namesDiv.insertBefore(nameSection, namesDiv.children[numberOfChilds - 2]);
+    namesDiv.insertBefore(nameSection, namesDiv.children[numberOfChilds - 1]);
 };
 
 const removeNameSection = () => {
     let namesDiv = document.querySelector(".names");
     let numberOfChilds = namesDiv.childElementCount;
-    if (numberOfChilds > 4) {
-        namesDiv.removeChild(namesDiv.children[numberOfChilds - 3]);
+    if (numberOfChilds > 3) {
+        namesDiv.removeChild(namesDiv.children[numberOfChilds - 2]);
     }
 };
 
@@ -99,18 +101,54 @@ const changeInputColor = ({target}) => {
     changeColor(nameInput, genderSpan, target.checked);
 };
 
-const addEventListenerToSwitches = switches => {
-    let checkboxes = Array.from(switches).map(s => s.querySelector("input"));
-    checkboxes.forEach(c => c.onchange = changeInputColor);
+const isChecked = element => element.children[1].querySelector("input").checked;
+
+const isBodyValid = body => body.every(b => b.participantName !== "" && b.gender !== "");
+
+const generateBody = () => {
+    const nameSections = document.querySelectorAll(".nameSection");
+    const body = [];
+    nameSections.forEach(n => {
+        body.push({
+            participantName: n.firstChild.value,
+            gender: isChecked(n) ? "F " : "M"
+        });
+    });
+    if (!isBodyValid(body)) {
+        throw new SyntaxError("All The Fields Should Be Filled");
+    }
+    return JSON.stringify(body);
+};
+
+const showErrorAlert = (message) => {
+    const errorMessage = document.querySelector(".errorMessage");
+    errorMessage.innerHTML= message;
+    errorMessage.parentElement.style.visibility="visible"
+};
+
+const saveParticipantsAndShowMode = async () => {
+    let body;
+    try {
+        body = generateBody();
+    }catch (e) {
+        showErrorAlert(e.message)
+    }
+    await fetch("http://localhost:8000/participants", {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        method: 'post',
+        body: body
+    });
 };
 
 const addEventListeners = () => {
     let addButton = document.querySelector(".add");
     let removeButton = document.querySelector(".remove");
-    let genderSwitches = document.querySelectorAll(".switch");
+    let nextButton = document.querySelector(".next");
     addButton.onclick = addNameSection;
     removeButton.onclick = removeNameSection;
-    addEventListenerToSwitches(genderSwitches);
+    nextButton.onclick = saveParticipantsAndShowMode;
 };
 
 const onload = () => {

@@ -1,74 +1,27 @@
-html {
-    min-height: 100%;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    font-family: Avenir, "Avenir Next", serif;
-    width: 100%;
-    min-height: 100vh;
-
-    margin: 0;
-}
-
-header {
-    height: 20vh;
-    text-align: center;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font: 30px Avenir;
-    font-weight: lighter;
-    color: ghostwhite;
-    text-shadow: black;
-    background-image: linear-gradient(to right top, #a8eb12, #b3eb0e, #bdeb0c,
-    #c7eb0b, #d1eb0d, #dedd00, #e9cf00, #f1c100, #f7a100, #f88009, #f55c21, #ec3232);
-}
-
-h1 {
-    text-shadow: 2px 2px darkgray;
-}
-
-main {
-    width: 100%;
-    height: 80vh;
-
-
-    background-repeat: no-repeat;
-    background-size: auto;
-}
-
-a {
-    color: #00B7FF;
-}
-
-main {
-    margin-top: 8%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    text-align: center;
-}
-
 .nameForm {
+    margin-top: 1%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .modeDropDown {
-    font-family: Avenir, serif;
-    font-size: 120%;
     height: 5vh;
     width: 30vh;
+    font-family: Avenir, serif;
+    font-size: 120%;
     border: none;
     background-color: lightgreen;
+}
+
+.names{
+    margin-top: 10%;
 }
 
 .switch {
     position: relative;
     display: inline-block;
+
     width: 65px;
     height: 35px;
     margin: 0 2%;
@@ -81,24 +34,29 @@ main {
 }
 
 .slider {
-    position: absolute;
-    cursor: pointer;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+
+    position: absolute;
+    cursor: pointer;
     background-color: cornflowerblue;
+
     -webkit-transition: .4s;
     transition: .4s;
 }
 
 .slider:before {
-    position: absolute;
-    content: "";
     height: 25px;
     width: 25px;
+
     left: 5px;
     bottom: 5px;
+
+    position: absolute;
+    content: "";
+
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
@@ -130,11 +88,13 @@ input:checked + .slider:before {
 
 .nameInput {
     width: 30vh;
+
     font-size: 110%;
-    padding: 10px;
-    border-radius: 8px;
     font-family: "Avenir Next", serif;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 8px;
     border: 1px solid cornflowerblue;
+    padding: 10px;
 }
 
 .nameInput::placeholder {
@@ -151,11 +111,15 @@ input:checked + .slider:before {
 .buttonDiv {
     display: flex;
     justify-content: center;
+    margin-top: 10%;
 }
 
 button[type="button"] {
     width: 15%;
+    height: 4vh;
+
     font-size: 150%;
+
     border-radius: 15px;
     margin: 2%;
     cursor: pointer;
@@ -165,25 +129,61 @@ button:focus, input[type="text"]:focus {
     outline: none;
 }
 
-.feminineInput {
+button[type="submit"] {
+    width: 98%;
+    height: 5vh;
+
+    font-size: 130%;
+    font-family: Avenir, serif;
+
+    border: 0;
+    border-radius: 8px;
+
+    background-color: #6fff0d;
+    cursor: pointer;
+    margin-top: 6%;
+}
+
+.feminineInput, .feminine {
     border: 1px solid hotpink;
     color: hotpink;
 }
 
-.feminineInput::placeholder, .feminine {
-    color: #FF69B4;
+.feminineInput::placeholder {
+    color: rgba(255, 105, 180, 0.42);
 }
 
-.masculineInput {
+.masculineInput, .masculine {
     border: 1px solid cornflowerblue;
     color: cornflowerblue;
 }
 
-.masculineInput::placeholder, .masculine {
-    color: #63A8FF;
+.masculineInput::placeholder {
+    color: rgba(99, 168, 255, 0.45);
 }
 
-span.feminine,span.masculine{
+span.feminine, span.masculine {
+    border: none;
     font-size: 200%;
     font-family: Avenir, serif;
+}
+
+.errorAlert {
+    width: 94%;
+    padding: 10px;
+
+    font: 120% bold Avenir;
+    background-color: rgba(255, 0, 0, 0.05);
+    border: 2px solid rgba(255, 0, 0, 0.75);
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    justify-self: flex-start;
+}
+
+.errorMessage {
+    margin-right: 12%;
+    color: rgba(255, 0, 0, 0.75);
 }
