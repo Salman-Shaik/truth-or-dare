@@ -114,32 +114,34 @@ const generateBody = () => {
             gender: isChecked(n) ? "F " : "M"
         });
     });
-    if (!isBodyValid(body)) {
-        throw new SyntaxError("All The Fields Should Be Filled");
-    }
+    if (!isBodyValid(body)) throw new SyntaxError("All The Fields Should Be Filled");
     return JSON.stringify(body);
 };
 
 const showErrorAlert = (message) => {
     const errorMessage = document.querySelector(".errorMessage");
-    errorMessage.innerHTML= message;
-    errorMessage.parentElement.style.visibility="visible"
+    errorMessage.innerHTML = message;
+    errorMessage.parentElement.style.visibility = "visible"
 };
 
 const saveParticipantsAndShowMode = async () => {
     let body;
     try {
         body = generateBody();
-    }catch (e) {
+    } catch (e) {
         showErrorAlert(e.message)
     }
-    await fetch("http://localhost:8000/participants", {
+    const status = await fetch("http://localhost:8000/participants", {
         headers: {
             'Content-Type': 'application/json',
         },
         method: 'post',
         body: body
-    });
+    })
+        .then(res => res.status)
+        .catch(e => showErrorAlert("Didn't Save, Please Try Again!"));
+
+    if (status === 200) window.location.href = "/mode";
 };
 
 const addEventListeners = () => {

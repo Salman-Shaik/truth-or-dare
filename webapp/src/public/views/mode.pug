@@ -1,0 +1,18 @@
+doctype html
+head
+    meta(charset='UTF-8')
+    title Truth Or Dare : Something Different
+    link(rel='stylesheet' href='CSS/master.css')
+    script(rel='script' src='JS/mode.js')
+header
+    h1 Truth &amp; Dare
+main
+    section.mode(style='display: none')
+        select#mode.modeDropDown
+            option(value='default' selected='')  Select Mode
+            option(value='Funny') Funny &#x1F603;
+            option(value='Party') Party &#x1F37E;
+            option(value='Hot') Hot &#x1F609; (18+)
+            option(value='Super Hot') Super Hot &#x1F608;&#x1F336; (18+)
+    button.next(type='submit') &lt; Previous
+    button.next(type='submit') Next &gt;

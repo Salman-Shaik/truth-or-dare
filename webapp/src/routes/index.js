@@ -6,6 +6,10 @@ router.get('/', function (req, res, next) {
     res.render('index', {title: 'Express'});
 });
 
+router.get('/mode', function (req, res, next) {
+    res.render('mode', {title: 'Express'});
+});
+
 router.post('/participants', (req, res) => {
     let participantsList = req.body;
     const game = req.app.game;
