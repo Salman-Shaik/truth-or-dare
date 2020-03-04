@@ -67,14 +67,25 @@ const addNameSection = () => {
     let namesDiv = document.querySelector(".names");
     let nameSection = createNameSection();
     let numberOfChilds = namesDiv.childElementCount;
-    namesDiv.insertBefore(nameSection, namesDiv.children[numberOfChilds - 1]);
+    if (numberOfChilds <= 8) {
+        namesDiv.insertBefore(nameSection, namesDiv.children[numberOfChilds - 1]);
+    }
+    if (numberOfChilds + 1 === 8) {
+        disableAddButton();
+    }
 };
 
-const removeNameSection = () => {
+const removeNameSection = ({target}) => {
     let namesDiv = document.querySelector(".names");
     let numberOfChilds = namesDiv.childElementCount;
     if (numberOfChilds > 3) {
         namesDiv.removeChild(namesDiv.children[numberOfChilds - 2]);
+    }
+    if (numberOfChilds - 1 === 3) {
+        target.disabled = true;
+    }
+    if (numberOfChilds - 1 < 8) {
+        enableAddButton();
     }
 };
 
@@ -144,11 +155,29 @@ const saveParticipantsAndShowMode = async () => {
     if (status === 200) window.location.href = "/mode";
 };
 
+const enableRemoveButton = () => {
+    const removeButton = document.querySelector(".remove");
+    removeButton.disabled = false;
+};
+
+const disableAddButton = () => {
+    const removeButton = document.querySelector(".add");
+    removeButton.disabled = true;
+};
+
+const enableAddButton = () => {
+    const removeButton = document.querySelector(".add");
+    removeButton.disabled = false;
+};
+
 const addEventListeners = () => {
     let addButton = document.querySelector(".add");
     let removeButton = document.querySelector(".remove");
     let nextButton = document.querySelector(".next");
-    addButton.onclick = addNameSection;
+    addButton.onclick = () => {
+        enableRemoveButton();
+        addNameSection();
+    };
     removeButton.onclick = removeNameSection;
     nextButton.onclick = saveParticipantsAndShowMode;
 };
