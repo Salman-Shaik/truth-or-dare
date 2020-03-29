@@ -10,6 +10,10 @@ router.get('/mode', function (req, res, next) {
     res.render('mode', {title: 'Express'});
 });
 
+router.get('/participants', function (req, res, next) {
+    res.send(req.app.game.getParticipants());
+});
+
 router.post('/participants', (req, res) => {
     let participantsList = req.body;
     const game = req.app.game;

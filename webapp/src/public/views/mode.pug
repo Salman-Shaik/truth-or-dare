@@ -10,6 +10,9 @@ head
 header
     h1 Truth &amp; Dare
 main
+    .errorAlert(style='visibility: hidden')
+        i.material-icons(style='font-size:30px;color: rgba(255, 0, 0, 0.75);') error_outline
+        span.errorMessage
     section.mode(style='display: none')
         select#mode.modeDropDown
             option(value='default' selected='')  Select Mode
