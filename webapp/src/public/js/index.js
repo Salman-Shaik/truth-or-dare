@@ -149,7 +149,7 @@ const saveParticipantsAndShowMode = async () => {
     } catch (e) {
         showErrorAlert(e.message)
     }
-    const status = await fetch("http://localhost:8000/participants", {
+    const status = await fetch("/participants", {
         headers: {
             'Content-Type': 'application/json',
         },
@@ -217,7 +217,7 @@ const fillDataInNameSections = (participants) => {
 };
 
 const showData = async () => {
-    const participants = await fetch("http://localhost:8000/participants")
+    const participants = await fetch("/participants")
         .then(res => res.text())
         .then(data => JSON.parse(data));
     fillDataInNameSections(participants);

@@ -5,7 +5,7 @@ const getMode = () => {
 
 const saveMode = async () => {
     const body = getMode();
-    const status = await fetch("http://localhost:8000/mode", {
+    const status = await fetch("mode", {
         headers: {
             'Content-Type': 'application/json',
         },
