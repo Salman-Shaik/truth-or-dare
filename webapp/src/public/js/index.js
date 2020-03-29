@@ -219,8 +219,7 @@ const fillDataInNameSections = (participants) => {
 const showData = async () => {
     const participants = await fetch("http://localhost:8000/participants")
         .then(res => res.text())
-        .then(data => JSON.parse(data))
-        .catch(e => showErrorAlert("Didn't Fetch, Please Try Again!"));
+        .then(data => JSON.parse(data));
     fillDataInNameSections(participants);
 };
 
