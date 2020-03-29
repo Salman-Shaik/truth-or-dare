@@ -1,12 +1,3 @@
-const showElement = element => {
-    element.style.display = "block";
-};
-
-const showMode = () => {
-    let modeDiv = document.querySelector(".mode");
-    showElement(modeDiv);
-};
-
 const createNameInput = () => {
     let nameInput = document.createElement("input");
     nameInput.type = "text";

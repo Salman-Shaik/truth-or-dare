@@ -17,4 +17,11 @@ router.post('/participants', (req, res) => {
     res.send("Ok");
 });
 
+router.post('/mode', (req, res) => {
+    let mode = req.body.mode;
+    const game = req.app.game;
+    game.setMode(mode);
+    res.send("Ok");
+});
+
 module.exports = router;

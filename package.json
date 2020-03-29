@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node webapp/server.js",
-    "start:watch": "nodemon webapp/server.js"
+    "start:watch": "nodemon --ignore '*.json' webapp/server.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

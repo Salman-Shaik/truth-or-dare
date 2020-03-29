@@ -45,3 +45,21 @@ main {
     align-items: center;
     text-align: center;
 }
+
+button:focus, input[type="text"]:focus {
+    outline: none;
+}
+
+button[type="submit"] {
+    height: 5vh;
+
+    font-size: 130%;
+    font-family: Avenir, serif;
+
+    border: 0;
+    border-radius: 8px;
+
+    background-color: #6fff0d;
+    cursor: pointer;
+    margin-top: 6%;
+}

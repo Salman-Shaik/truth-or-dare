@@ -3,7 +3,10 @@ head
     meta(charset='UTF-8')
     title Truth Or Dare : Something Different
     link(rel='stylesheet' href='CSS/master.css')
+    link(rel='stylesheet' href='CSS/mode.css')
+    link(rel='shortcut icon' type='image/jpg' href='IMAGES/favicon.ico')
     script(rel='script' src='JS/mode.js')
+    script(rel='script' src='JS/common/methods.js')
 header
     h1 Truth &amp; Dare
 main
@@ -14,5 +17,6 @@ main
             option(value='Party') Party &#x1F37E;
             option(value='Hot') Hot &#x1F609; (18+)
             option(value='Super Hot') Super Hot &#x1F608;&#x1F336; (18+)
-    button.next(type='submit') &lt; Previous
-    button.next(type='submit') Next &gt;
+    div.buttonsDiv
+        button.prev(type='submit') &lt; Previous
+        button.next(type='submit') Next &gt;

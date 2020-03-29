@@ -11,15 +11,19 @@ class Game {
 
     setParticipants(participantsJson) {
         this.participants = participantsJson.map(participant => Participant.from(participant));
-        this.saveInFile();
     }
 
     getParticipants() {
         return this.participants;
     }
 
+    setMode(mode) {
+        this.mode = mode;
+        this.saveInFile();
+    }
+
     saveInFile() {
-        fs.writeFileSync(path.resolve(__dirname, "../participants.json"), JSON.stringify(this.getParticipants()));
+        fs.writeFileSync(path.resolve(__dirname, "../participants.json"), JSON.stringify(this));
     }
 }
 
