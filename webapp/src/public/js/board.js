@@ -17,6 +17,10 @@ const showNames = async () => {
         .then(res => res.text())
         .then(data => JSON.parse(data))
         .catch(e => showErrorAlert("Didn't Fetch, Please Try Again!"));
+    if (participants.length === 0) {
+        window.location.href = "/";
+        return;
+    }
     fillNamesSections(participants);
     return participants;
 };
