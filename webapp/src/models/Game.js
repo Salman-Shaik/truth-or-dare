@@ -17,6 +17,10 @@ class Game {
         return this.participants;
     }
 
+    getMode() {
+        return this.mode;
+    }
+
     setMode(mode) {
         this.mode = mode;
         this.saveInFile();

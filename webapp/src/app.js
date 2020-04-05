@@ -8,8 +8,10 @@ const indexRouter = require('./routes');
 
 const app = express();
 
-app.initialize = function (game) {
+app.initialize = (game, truths, dares) => {
     app.game = game;
+    app.truths = truths;
+    app.dares = dares;
 };
 
 // view engine setup

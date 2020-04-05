@@ -3,6 +3,9 @@ const getMode = () => {
     return {mode: modeDropdown.value}
 };
 
+const goToBoard = () => window.location.href = "/board";
+const goToPreviousPage = () => window.location.href = "/";
+
 const saveMode = async () => {
     const body = getMode();
     const status = await fetch("mode", {
@@ -14,10 +17,9 @@ const saveMode = async () => {
     }).then(r => +r.status)
         .catch(e => showErrorAlert("Didn't Save, Please Try Again!"));
     if (status === 200) {
+        goToBoard();
     }
 };
-
-const goToPreviousPage = () => window.location.href = "/";
 
 const addEventListeners = () => {
     const nextButton = document.querySelector(".next");

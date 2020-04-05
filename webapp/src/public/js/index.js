@@ -1,8 +1,7 @@
 const createNameInput = (name, gender) => {
     let nameInput = document.createElement("input");
     nameInput.type = "text";
-    nameInput.placeholder = "Enter Name";
-    nameInput.pattern = "[A-Za-z]";
+    nameInput.placeholder = "Enter First Name";
     nameInput.value = !!name ? name : "";
     nameInput.className = isFemale(gender)
         ? "nameInput feminineInput"
@@ -127,7 +126,8 @@ const changeInputColor = ({target}) => {
 };
 
 const isChecked = element => element.children[1].querySelector("input").checked;
-const isBodyValid = body => body.every(b => b.participantName !== "" && b.gender !== "");
+const isBodyEmpty = body => ! body.every(b => b.participantName !== "" && b.gender !== "");
+const areAllNamesValid = body => body.every(b => b.participantName.match("^[A-Za-z]{1,10}$"));
 
 const generateBody = () => {
     const nameSections = document.querySelectorAll(".nameSection");
@@ -138,7 +138,8 @@ const generateBody = () => {
             gender: isChecked(n) ? "F" : "M"
         });
     });
-    if (!isBodyValid(body)) throw new SyntaxError("All The Fields Should Be Filled");
+    if (isBodyEmpty(body)) throw new SyntaxError("All The Fields Should Be Filled");
+    if(!areAllNamesValid(body)) throw new SyntaxError("All The Names Should Be <=10")
     return JSON.stringify(body);
 };
 

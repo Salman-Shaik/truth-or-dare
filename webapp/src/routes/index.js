@@ -1,17 +1,34 @@
+const {getRandomItem} = require('../utils');
+
 const express = require('express');
 const router = express.Router();
 
-/* GET home page. */
-router.get('/', function (req, res, next) {
+router.get('/', (req, res, next) => {
     res.render('index', {title: 'Express'});
 });
 
-router.get('/mode', function (req, res, next) {
+router.get('/mode', (req, res, next) => {
     res.render('mode', {title: 'Express'});
 });
 
-router.get('/participants', function (req, res, next) {
+router.get('/board', (req, res, next) => {
+    res.render('board', {title: 'Express'});
+});
+
+router.get('/participants', (req, res, next) => {
     res.send(req.app.game.getParticipants());
+});
+
+router.get("/truth", (req, res, next) => {
+    const mode = req.app.game.getMode();
+    const truths = req.app.truths[mode];
+    res.send(getRandomItem(truths))
+});
+
+router.get("/dare", (req, res, next) => {
+    const mode = req.app.game.getMode();
+    const dares = req.app.dares[mode];
+    res.send(getRandomItem(dares))
 });
 
 router.post('/participants', (req, res) => {

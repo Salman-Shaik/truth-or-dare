@@ -1,3 +1,8 @@
+header {
+    background-image: linear-gradient(to right top, #a8eb12, #b3eb0e, #bdeb0c,
+    #c7eb0b, #d1eb0d, #dedd00, #e9cf00, #f1c100, #f7a100, #f88009, #f55c21, #ec3232);
+}
+
 .nameForm {
     margin-top: 1%;
     display: flex;
@@ -14,7 +19,7 @@
     background-color: lightgreen;
 }
 
-.names{
+.names {
     margin-top: 10%;
 }
 
@@ -125,8 +130,9 @@ button[type="button"] {
     cursor: pointer;
 }
 
-button[type="submit"]{
+button[type="submit"] {
     width: 98%;
+    margin-top: 6%;
 }
 
 .feminineInput, .feminine {
