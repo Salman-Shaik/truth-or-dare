@@ -64,6 +64,16 @@ const getTruthAndDare = async () => {
     insertTruthAndDare(truth, dare);
 };
 
+const showCards = () => {
+    const cards = document.querySelector(".cards");
+    cards.style.visibility = "visible";
+};
+
+const hideCards = () => {
+    const cards = document.querySelector(".cards");
+    cards.style.visibility = "hidden";
+};
+
 const highlightParticipant = async (rp, index) => {
     const disableAllNameButtons = () => {
         const names = document.querySelectorAll(".name");
@@ -71,12 +81,14 @@ const highlightParticipant = async (rp, index) => {
     };
 
     disableAllNameButtons();
+    hideCards();
     const name = rp.participantName;
     const nameButton = getNameButton(name);
     nameButton.disabled = false;
     await sleep(400);
     if (index === 9) {
         displayName(name);
+        showCards();
         await getTruthAndDare();
     }
 };
