@@ -12,7 +12,13 @@ router.get('/mode', (req, res, next) => {
 });
 
 router.get('/board', (req, res, next) => {
-    res.render('board', {title: 'Express'});
+    const {length} = req.app.game.getParticipants();
+    if (length === 0) {
+        res.redirect("/");
+    } else {
+        res.render('board', {title: 'Express'});
+    }
+
 });
 
 router.get('/participants', (req, res, next) => {
