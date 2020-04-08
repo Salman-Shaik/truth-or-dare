@@ -1,48 +1,17 @@
-const {getRandomItem} = require('../utils');
-
 const express = require('express');
+
+const {getParticipants, getModePage, getBoardPage, getHomePage, getDare, getTruth} = require("../requestHandlers/getHandlers");
+const {setParticipants, setMode} = require("../requestHandlers/postHandlers");
+
 const router = express.Router();
 
-router.get('/', (req, res, next) => {
-    res.render('index', {title: 'Express'});
-});
+router.get('/', getHomePage);
+router.get('/mode', getModePage);
+router.get('/board', getBoardPage);
+router.get('/participants', getParticipants);
+router.get("/truth", getTruth);
+router.get("/dare", getDare);
 
-router.get('/mode', (req, res, next) => {
-    res.render('mode', {title: 'Express'});
-});
-
-router.get('/board', (req, res, next) => {
-    res.render('board', {title: 'Express'});
-});
-
-router.get('/participants', (req, res, next) => {
-    res.send(req.app.game.getParticipants());
-});
-
-router.get("/truth", (req, res, next) => {
-    const mode = req.app.game.getMode();
-    const truths = req.app.truths[mode];
-    res.send(getRandomItem(truths))
-});
-
-router.get("/dare", (req, res, next) => {
-    const mode = req.app.game.getMode();
-    const dares = req.app.dares[mode];
-    res.send(getRandomItem(dares))
-});
-
-router.post('/participants', (req, res) => {
-    let participantsList = req.body;
-    const game = req.app.game;
-    game.setParticipants(participantsList);
-    res.send("Ok");
-});
-
-router.post('/mode', (req, res) => {
-    let mode = req.body.mode;
-    const game = req.app.game;
-    game.setMode(mode);
-    res.send("Ok");
-});
-
+router.post('/participants', setParticipants);
+router.post('/mode', setMode);
 module.exports = router;

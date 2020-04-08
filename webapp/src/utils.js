@@ -5,4 +5,4 @@ const getRandomItem = (array) => {
 
 module.exports = {
     getRandomItem
-}
+};
