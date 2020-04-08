@@ -158,23 +158,3 @@ span.feminine, span.masculine {
     font-size: 200%;
     font-family: Avenir, serif;
 }
-
-.errorAlert {
-    width: 94%;
-    padding: 10px;
-
-    font: 120% bold Avenir;
-    background-color: rgba(255, 0, 0, 0.05);
-    border: 2px solid rgba(255, 0, 0, 0.75);
-    border-radius: 10px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    justify-self: flex-start;
-}
-
-.errorMessage {
-    margin-right: 12%;
-    color: rgba(255, 0, 0, 0.75);
-}

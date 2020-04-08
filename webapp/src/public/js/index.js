@@ -126,7 +126,7 @@ const changeInputColor = ({target}) => {
 };
 
 const isChecked = element => element.children[1].querySelector("input").checked;
-const isBodyEmpty = body => ! body.every(b => b.participantName !== "" && b.gender !== "");
+const isBodyEmpty = body => !body.every(b => b.participantName !== "" && b.gender !== "");
 const areAllNamesValid = body => body.every(b => b.participantName.match("^[A-Za-z]{1,10}$"));
 
 const generateBody = () => {
@@ -139,7 +139,7 @@ const generateBody = () => {
         });
     });
     if (isBodyEmpty(body)) throw new SyntaxError("All The Fields Should Be Filled");
-    if(!areAllNamesValid(body)) throw new SyntaxError("All The Names Should Be <=10")
+    if (!areAllNamesValid(body)) throw new SyntaxError("All The Names Should Be <=10")
     return JSON.stringify(body);
 };
 
@@ -160,7 +160,7 @@ const saveParticipantsAndShowMode = async () => {
         .then(res => res.status)
         .catch(e => showErrorAlert("Didn't Save, Please Try Again!"));
 
-    if (status === 200) window.location.href = "/mode";
+    if (status === 201) window.location.href = "/mode";
 };
 
 const enableRemoveButton = () => {

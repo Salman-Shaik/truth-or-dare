@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require("path");
+const _ = require('lodash');
 
 const Participant = require("./Participant");
 
@@ -27,7 +28,17 @@ class Game {
     }
 
     saveInFile() {
-        fs.writeFileSync(path.resolve(__dirname, "../data/participants.json"), JSON.stringify(this));
+        const data = this.isDataEmpty() ? JSON.stringify({}) : JSON.stringify(this);
+        fs.writeFileSync(path.resolve(__dirname, "../data/participants.json"), data);
+    }
+
+    isDataEmpty() {
+        return _.isEmpty(this.getParticipants()) || _.isEmpty(this.getMode());
+    }
+
+    deleteData() {
+        this.setParticipants([]);
+        this.setMode("");
     }
 }
 

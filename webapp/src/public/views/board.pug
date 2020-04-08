@@ -4,46 +4,52 @@ head
     title  Truth Or Dare : Something Different
     link(rel='stylesheet' href='css/board.css')
     link(rel='stylesheet' href='css/master.css')
+    link(rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons')
     link(rel='shortcut icon' type='image/jpg' href='images/favicon.ico')
     script(rel='script' src='js/board.js')
     script(rel='script' src='js/common/methods.js')
-header
-    img.logo(src='../images/td.png' alt='truth or dare')
-main
-    div.namesDiv
-    button.roll(type="submit") Roll &#8634;
-    div.cards(style='visibility: hidden')
-        .flip-card
-            .flip-card-inner.truthCard
-                .flip-card-front
-                    img.cardLogo(src='../images/td.png' alt='Avatar' style='width:200px;height:200px;')
-                    label.cardHeader Truth
-                .flip-card-back.truth
-                    .topHeader
-                        span
-                            p.truth ?
-                        span
-                            p.truth TRUTH
-                    .truthQuestion
-                    .bottomHeader
-                        span
-                            p.truth HRURT
-                        span
-                            p.truth ?
-        .flip-card
-            .flip-card-inner.dareCard
-                .flip-card-front
-                    img.cardLogo(src='../images/td.png' alt='Avatar')
-                    label.cardHeader Dare
-                .flip-card-back.dare
-                    .topHeader
-                        span
-                            p.dare !
-                        span
-                            p.dare DARE
-                    .dareQuestion
-                    .bottomHeader
-                        span
-                            p.dare ERAD
-                        span
-                            p.dare !
+body
+    button.exit Exit 𝘹
+    .errorAlert(style='visibility: hidden')
+        i.material-icons(style='font-size:30px;color: rgba(255, 0, 0, 0.75);') error_outline
+        span.errorMessage
+    header
+        img.logo(src='../images/td.png' alt='truth or dare')
+    main
+        div.namesDiv
+        button.roll(type="submit") Roll &#8634;
+        div.cards(style='visibility: hidden')
+            .flip-card
+                .flip-card-inner.truthCard
+                    .flip-card-front
+                        img.cardLogo(src='../images/td.png' alt='Avatar' style='width:200px;height:200px;')
+                        label.cardHeader Truth
+                    .flip-card-back.truth
+                        .topHeader
+                            span
+                                p.truth ?
+                            span
+                                p.truth TRUTH
+                        .truthQuestion
+                        .bottomHeader
+                            span
+                                p.truth HRURT
+                            span
+                                p.truth ?
+            .flip-card
+                .flip-card-inner.dareCard
+                    .flip-card-front
+                        img.cardLogo(src='../images/td.png' alt='Avatar')
+                        label.cardHeader Dare
+                    .flip-card-back.dare
+                        .topHeader
+                            span
+                                p.dare !
+                            span
+                                p.dare DARE
+                        .dareQuestion
+                        .bottomHeader
+                            span
+                                p.dare ERAD
+                            span
+                                p.dare !

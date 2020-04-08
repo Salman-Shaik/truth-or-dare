@@ -1,10 +1,18 @@
 const createError = require('http-errors');
+const _ = require('lodash');
 
 const redirectToHomepageIfNoParticipants = (req, res, next) => {
-    const noParticipants = req.app.game.getParticipants().length === 0;
-    const condition = req.url !== "/" && req.url !== "/participants" && req.method === "GET";
-    if (noParticipants && condition) {
+    const noParticipants = _.isEmpty(req.app.game.getParticipants());
+    if (noParticipants && (req.url === "/board" || req.url === "/mode") && !req.app.active) {
         res.redirect("/");
+        return;
+    }
+    next();
+};
+
+const redirectToBoardIfGameIsActive = (req, res, next) => {
+    if (req.app.active && (req.url === "/" || req.url === "/mode")) {
+        res.redirect("/board");
         return;
     }
     next();
@@ -23,6 +31,7 @@ const notFoundHandler = (req, res, next) => {
 };
 module.exports = {
     redirectToHomepageIfNoParticipants,
+    redirectToBoardIfGameIsActive,
     errorHandler,
     notFoundHandler
 };

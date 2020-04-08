@@ -96,9 +96,24 @@ const selectOneParticipant = async () => {
     }
 };
 
-const addEventListener = () => {
+const deleteGame = async () => {
+    await fetch("/game", {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        method: 'delete'
+    })
+        .then(res => res.status)
+        .catch(e => showErrorAlert("Didn't Delete, Please Try Again!"));
+    await setGameStatus(false);
+    window.location.reload();
+};
+
+const addEventListeners = () => {
     const rollButton = document.querySelector(".roll");
+    const exitButton = document.querySelector(".exit");
     rollButton.onclick = selectOneParticipant;
+    exitButton.onclick = deleteGame;
 };
 
 const createCurrentNameSpan = () => {
@@ -113,9 +128,22 @@ const addAndShowCurrentNameSection = () => {
     main.insertBefore(span, main.firstChild);
 };
 
+const setGameStatus = async (status) => {
+    await fetch("/status", {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        method: 'put',
+        body: JSON.stringify({status})
+    })
+        .then(res => res.status)
+        .catch(e => showErrorAlert("Didn't Update, Please Try Again!"));
+};
+
 const onload = async () => {
+    await setGameStatus(true);
     addAndShowCurrentNameSection();
     participants = await showNames();
-    addEventListener();
+    addEventListeners();
 };
 window.onload = onload;

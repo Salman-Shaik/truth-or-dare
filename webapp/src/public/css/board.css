@@ -5,23 +5,24 @@ body {
 
     height: 100vh;
     background-color: #222222;
+    font-family: Avenir, serif;
 }
 
 header {
     display: flex;
     justify-content: center;
     height: 30vh;
+    width: 100%;
     background-image: none;
 }
 
 .logo {
-    width: 45%;
-    margin-top: 10%;
+    width: 13%;
+    margin-top: -3%;
     align-self: center;
 }
 
 main {
-    margin-top: 2%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -56,7 +57,7 @@ main {
 }
 
 .roll {
-    margin-top: 3%;
+    margin-top: 2%;
 }
 
 span {
@@ -180,4 +181,21 @@ span {
 .truthQuestion, .dareQuestion {
     font-size: 110%;
     margin: 0 2%;
+}
+
+.exit{
+    font-family: Avenir, serif;
+    font-size: 110%;
+    font-weight: bold;
+
+    color: #222222;
+    background-color: #FE5757;
+
+    align-self: flex-end;
+
+    border: none;
+    border-radius: 5px;
+    margin: 1%;
+    height: 5vh;
+    width: 5%;
 }

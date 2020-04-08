@@ -14,4 +14,13 @@ router.get("/dare", getDare);
 
 router.post('/participants', setParticipants);
 router.post('/mode', setMode);
+router.delete('/game', (req, res) => {
+    req.app.game.deleteData();
+    res.send("Deleted")
+});
+router.put('/status', (req, res) => {
+    const {status} = req.body;
+    req.app.active = status;
+    res.status(204).send("Updated");
+});
 module.exports = router;

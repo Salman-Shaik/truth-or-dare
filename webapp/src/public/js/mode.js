@@ -16,7 +16,7 @@ const saveMode = async () => {
         body: JSON.stringify(body),
     }).then(r => +r.status)
         .catch(e => showErrorAlert("Didn't Save, Please Try Again!"));
-    if (status === 200) {
+    if (status === 201) {
         goToBoard();
     }
 };
