@@ -27,7 +27,7 @@ class Game {
     }
 
     saveInFile() {
-        fs.writeFileSync(path.resolve(__dirname, "../participants.json"), JSON.stringify(this));
+        fs.writeFileSync(path.resolve(__dirname, "../data/participants.json"), JSON.stringify(this));
     }
 }
 

@@ -4,7 +4,7 @@ const logger = require('morgan');
 const path = require('path');
 
 const indexRouter = require('./routes');
-const {notFoundHandler, errorHandler, redirectToHomepageIfNoParticipants} = require("./requestHandlers/middleware");
+const {notFoundHandler, errorHandler, redirectToHomepageIfNoParticipants} = require("./handlers/middleware");
 
 const app = express();
 

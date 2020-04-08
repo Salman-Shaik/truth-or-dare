@@ -1,7 +1,7 @@
 const express = require('express');
 
-const {getParticipants, getModePage, getBoardPage, getHomePage, getDare, getTruth} = require("../requestHandlers/getHandlers");
-const {setParticipants, setMode} = require("../requestHandlers/postHandlers");
+const {getParticipants, getModePage, getBoardPage, getHomePage, getDare, getTruth} = require("../handlers/getHandlers");
+const {setParticipants, setMode} = require("../handlers/postHandlers");
 
 const router = express.Router();
 

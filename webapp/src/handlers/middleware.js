@@ -1,6 +1,9 @@
 const createError = require('http-errors');
+
 const redirectToHomepageIfNoParticipants = (req, res, next) => {
-    if (req.app.game.getParticipants().length === 0 && req.url !== "/") {
+    const noParticipants = req.app.game.getParticipants().length === 0;
+    const condition = req.url !== "/" && req.url !== "/participants" && req.method === "GET";
+    if (noParticipants && condition) {
         res.redirect("/");
         return;
     }
