@@ -23,6 +23,13 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use((req, res, next) => {
+    if (req.app.game.getParticipants().length === 0 && req.url !== "/") {
+        res.redirect("/");
+        return;
+    }
+    next();
+});
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
