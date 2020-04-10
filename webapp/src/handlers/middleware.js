@@ -2,16 +2,20 @@ const createError = require('http-errors');
 const _ = require('lodash');
 
 const redirectToHomepageIfNoParticipants = (req, res, next) => {
-    const noParticipants = _.isEmpty(req.app.game.getParticipants());
-    if (noParticipants && (req.url === "/board" || req.url === "/mode") && !req.app.active) {
+    const {gameId} = req.cookies;
+    const noParticipants = _.isEmpty(req.app.games.getParticipants(gameId));
+    if (noParticipants && (req.url === "/board" || req.url === "/mode") && !req.app.active[gameId]) {
         res.redirect("/");
+        req.app.active[gameId] = false;
         return;
     }
     next();
 };
 
 const redirectToBoardIfGameIsActive = (req, res, next) => {
-    if (req.app.active && (req.url === "/" || req.url === "/mode")) {
+    const {gameId} = req.cookies;
+    const isGameActive = !!req.app.active[gameId];
+    if (isGameActive && (req.url === "/" || req.url === "/mode")) {
         res.redirect("/board");
         return;
     }

@@ -6,16 +6,9 @@ const getMode = () => {
 const goToBoard = () => window.location.href = "/board";
 const goToPreviousPage = () => window.location.href = "/";
 
-const saveMode = async () => {
+const updateMode = async () => {
     const body = getMode();
-    const status = await fetch("mode", {
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        method: 'post',
-        body: JSON.stringify(body),
-    }).then(r => +r.status)
-        .catch(e => showErrorAlert("Didn't Save, Please Try Again!"));
+    const status = await saveMode(body);
     if (status === 201) {
         goToBoard();
     }
@@ -24,7 +17,7 @@ const saveMode = async () => {
 const addEventListeners = () => {
     const nextButton = document.querySelector(".next");
     const prevButton = document.querySelector(".prev");
-    nextButton.onclick = saveMode;
+    nextButton.onclick = updateMode;
     prevButton.onclick = goToPreviousPage;
 };
 

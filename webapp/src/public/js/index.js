@@ -150,16 +150,7 @@ const saveParticipantsAndShowMode = async () => {
     } catch (e) {
         showErrorAlert(e.message)
     }
-    const status = await fetch("/participants", {
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        method: 'post',
-        body: body
-    })
-        .then(res => res.status)
-        .catch(e => showErrorAlert("Didn't Save, Please Try Again!"));
-
+    const status = await saveParticipants(body);
     if (status === 201) window.location.href = "/mode";
 };
 
@@ -218,9 +209,7 @@ const fillDataInNameSections = (participants) => {
 };
 
 const showData = async () => {
-    const participants = await fetch("/participants")
-        .then(res => res.text())
-        .then(data => JSON.parse(data));
+    const participants = await fetchParticipants;
     fillDataInNameSections(participants);
 };
 

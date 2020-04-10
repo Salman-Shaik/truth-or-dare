@@ -3,17 +3,17 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const path = require('path');
 
-const indexRouter = require('./routes');
+const router = require('./routes');
 const {redirectToBoardIfGameIsActive} = require("./handlers/middleware");
 const {notFoundHandler, errorHandler, redirectToHomepageIfNoParticipants} = require("./handlers/middleware");
 
 const app = express();
 
 app.initialize = (game, truths, dares) => {
-    app.game = game;
+    app.games = game;
     app.truths = truths;
     app.dares = dares;
-    app.active = false;
+    app.active = [];
 };
 
 app.set('views', path.join(__dirname, 'public/views'));
@@ -26,7 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(redirectToHomepageIfNoParticipants);
 app.use(redirectToBoardIfGameIsActive);
-app.use('/', indexRouter);
+app.use('/', router);
 app.use(notFoundHandler);
 app.use(errorHandler);
 

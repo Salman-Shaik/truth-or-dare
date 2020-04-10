@@ -1,10 +1,10 @@
 const http = require('http');
 const app = require('./src/app.js');
-const Game = require('./src/models/Game.js');
+const Games = require('./src/models/Games.js');
 const truths = require('./src/data/truths.json');
 const dares = require('./src/data/dares.json');
 
-app.initialize(new Game(),truths,dares);
+app.initialize(new Games(),truths,dares);
 
 const PORT = process.env.PORT || 8000;
 

@@ -13,10 +13,7 @@ const fillNamesSections = participants => {
 };
 
 const showNames = async () => {
-    const participants = await fetch("/participants")
-        .then(res => res.text())
-        .then(data => JSON.parse(data))
-        .catch(e => showErrorAlert("Didn't Fetch, Please Try Again!"));
+    const participants = await fetchParticipants();
     fillNamesSections(participants);
     return participants;
 };
@@ -96,15 +93,8 @@ const selectOneParticipant = async () => {
     }
 };
 
-const deleteGame = async () => {
-    await fetch("/game", {
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        method: 'delete'
-    })
-        .then(res => res.status)
-        .catch(e => showErrorAlert("Didn't Delete, Please Try Again!"));
+const exitGame = async () => {
+    await deleteGame();
     await setGameStatus(false);
     window.location.reload();
 };
@@ -113,7 +103,7 @@ const addEventListeners = () => {
     const rollButton = document.querySelector(".roll");
     const exitButton = document.querySelector(".exit");
     rollButton.onclick = selectOneParticipant;
-    exitButton.onclick = deleteGame;
+    exitButton.onclick = exitGame;
 };
 
 const createCurrentNameSpan = () => {
@@ -129,21 +119,17 @@ const addAndShowCurrentNameSection = () => {
 };
 
 const setGameStatus = async (status) => {
-    await fetch("/status", {
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        method: 'put',
-        body: JSON.stringify({status})
-    })
-        .then(res => res.status)
-        .catch(e => showErrorAlert("Didn't Update, Please Try Again!"));
+    await updateGameStatus(status);
 };
 
 const onload = async () => {
-    await setGameStatus(true);
     addAndShowCurrentNameSection();
     participants = await showNames();
+    if (participants.length !== 0) {
+        console.log("Hello")
+        await setGameStatus(true);
+    }
+
     addEventListeners();
 };
 window.onload = onload;

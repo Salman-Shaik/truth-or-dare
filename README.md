@@ -1,2 +1,2 @@
 # truth-or-dare
-The good ol' Truth Or Dare game
+The good ol' Truth Or Dare games
