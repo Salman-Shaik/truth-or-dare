@@ -147,6 +147,7 @@ span {
     width: 200px;
     height: 200px;
     align-self: center;
+    margin-top: 4%;
 }
 
 .cardHeader {
@@ -161,13 +162,17 @@ span {
     display: flex;
     justify-content: space-between;
     font-weight: bold;
+    font-size: 110%;
+    margin-top: 3%;
 }
 
 .bottomHeader {
     display: flex;
     justify-content: space-between;
     font-weight: bold;
+    font-size: 110%;
     transform: rotateX(180deg);
+    margin-bottom: 3%;
 }
 
 .truthCard {
@@ -189,16 +194,17 @@ span {
 .truthQuestion,
 .dareQuestion {
     font-size: 110%;
-    margin: 0 2%;
+    font-weight: bold;
+    margin: 0 5%;
 }
 
 .exit {
     font-family: Avenir, serif;
-    font-size: 110%;
-    font-weight: bold;
+    font-size: 180%;
+    font-weight: lighter;
 
-    color: #222222;
-    background-color: #fe5757;
+    color: #fe5757;
+    background-color: #222222;
 
     align-self: flex-end;
 
@@ -206,5 +212,14 @@ span {
     border-radius: 5px;
     margin: 1%;
     height: 5vh;
-    width: 5%;
+    width: 2%;
+    cursor: pointer;
+}
+
+.bottomHeaderTitle, .topSymbol {
+    margin-left: 5%;
+}
+
+.topHeaderTitle, .bottomSymbol {
+    margin-right: 5%;
 }

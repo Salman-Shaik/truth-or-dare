@@ -89,8 +89,8 @@ const highlightParticipant = async (rp, index) => {
     await sleep(400);
     if (index === 9) {
         displayName(name);
-        showCards();
         await getTruthAndDare();
+        showCards();
     }
 };
 
@@ -137,10 +137,13 @@ const onload = async () => {
     addAndShowCurrentNameSection();
     participants = await showNames();
     if (participants.length !== 0) {
-        console.log("Hello");
         await setGameStatus(true);
     }
-
     addEventListeners();
 };
+
+const onUnload = async () => await exitGame();
+
 window.onload = onload;
+window.onunload = onUnload;
+

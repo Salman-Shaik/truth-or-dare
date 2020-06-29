@@ -10,7 +10,7 @@ head
     script(rel='script' src='js/common/methods.js')
     script(rel='script' src='/js/common/networkCalls.js')
 body
-    button.exit Exit 𝘹
+    button.exit X
     .errorAlert(style='visibility: hidden')
         i.material-icons(style='font-size:30px;color: rgba(255, 0, 0, 0.75);') error_outline
         span.errorMessage
@@ -27,16 +27,16 @@ body
                         label.cardHeader Truth
                     .flip-card-back.truth
                         .topHeader
-                            span
-                                p.truth ?
-                            span
-                                p.truth TRUTH
+                            .topSymbol
+                                span.truth ?
+                            .topHeaderTitle
+                                span.truth TRUTH
                         .truthQuestion
                         .bottomHeader
-                            span
-                                p.truth HTURT
-                            span
-                                p.truth ?
+                            .bottomHeaderTitle
+                                span.truth HTURT
+                            .bottomSymbol
+                                span.truth ?
             .flip-card
                 .flip-card-inner.dareCard
                     .flip-card-front
@@ -44,13 +44,13 @@ body
                         label.cardHeader Dare
                     .flip-card-back.dare
                         .topHeader
-                            span
-                                p.dare !
-                            span
-                                p.dare DARE
+                            .topSymbol
+                                span.dare !
+                            .topHeaderTitle
+                                span.dare DARE
                         .dareQuestion
                         .bottomHeader
-                            span
-                                p.dare ERAD
-                            span
-                                p.dare !
+                            .bottomHeaderTitle
+                                span.dare ERAD
+                            .bottomSymbol
+                                span.dare !

@@ -1,11 +1,22 @@
+button {
+  width: 45%;
+  margin-top: 6%;
+}
+
+header {
+  background-image: linear-gradient(to right top, #a8eb12, #b3eb0e, #bdeb0c, #c7eb0b, #d1eb0d,
+  #dedd00, #e9cf00, #f1c100, #f7a100, #f88009, #f55c21, #ec3232);
+}
+
 .modeDropDown {
   margin-top: 30%;
   margin-bottom: 50%;
-  width: 100%;
-  height: 20%;
+  width: 110%;
+  height: 23%;
   font-size: 140%;
   border: none;
   background-color: #fe5757;
+  border-radius: 6px;
 }
 
 .buttonsDiv {
@@ -14,25 +25,3 @@
   justify-content: space-around;
 }
 
-button {
-  width: 45%;
-  margin-top: 6%;
-}
-
-header {
-  background-image: linear-gradient(
-    to right top,
-    #a8eb12,
-    #b3eb0e,
-    #bdeb0c,
-    #c7eb0b,
-    #d1eb0d,
-    #dedd00,
-    #e9cf00,
-    #f1c100,
-    #f7a100,
-    #f88009,
-    #f55c21,
-    #ec3232
-  );
-}
