@@ -33,13 +33,8 @@ const getRandomParticipants = () => {
 
 const getNameButton = (participantName) => {
     const xpath = `//button[text()='${participantName}']`;
-    return document.evaluate(
-        xpath,
-        document,
-        null,
-        XPathResult.FIRST_ORDERED_NODE_TYPE,
-        null
-    ).singleNodeValue;
+    return document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null)
+        .singleNodeValue;
 };
 
 const displayName = (name) => {

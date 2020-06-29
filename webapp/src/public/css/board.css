@@ -36,16 +36,14 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 80%;
+    width: 100%;
 }
 
 .name,
 .name:disabled {
-    width: 12%;
+    width: 9%;
     height: 6vh;
-    font-size: 150%;
-
-    border-radius: 8px;
+    font-size: 140%;
     background-color: #222222;
 }
 
@@ -61,7 +59,7 @@ main {
     border: 3px solid transparent;
     border-image: linear-gradient(to right top, #00FF10, #00C9FF, #00C9FF, #00FF10);
     border-image-slice: 1;
-    transform: scale(1.18, 1.18);
+    transform: scale(1.16, 1.16);
 }
 
 .roll {

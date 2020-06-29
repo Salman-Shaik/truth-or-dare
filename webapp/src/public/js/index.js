@@ -77,10 +77,10 @@ const addNameSection = (name, gender) => {
     let namesDiv = document.querySelector(".names");
     let nameSection = createNameSection(name, gender);
     let numberOfChilds = namesDiv.childElementCount;
-    if (numberOfChilds <= 8) {
+    if (numberOfChilds <= 11) {
         namesDiv.insertBefore(nameSection, namesDiv.children[numberOfChilds - 1]);
     }
-    if (numberOfChilds + 1 === 8) {
+    if (numberOfChilds + 1 === 11) {
         disableAddButton();
     }
 };
@@ -94,7 +94,7 @@ const removeNameSection = ({target}) => {
     if (numberOfChilds - 1 === 3) {
         target.disabled = true;
     }
-    if (numberOfChilds - 1 < 8) {
+    if (numberOfChilds - 1 < 11) {
         enableAddButton();
     }
 };

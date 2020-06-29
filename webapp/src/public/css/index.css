@@ -32,7 +32,8 @@ button[type="button"] {
 
 button[type="submit"] {
     width: 98%;
-    margin-top: 6%;
+    margin-top: 2%;
+    margin-bottom: 4%;
 }
 
 span.feminine,
@@ -59,7 +60,7 @@ span.masculine {
 }
 
 .names {
-    margin-top: 10%;
+    margin-top: 2%;
 }
 
 .switch {
@@ -140,7 +141,7 @@ span.masculine {
 .buttonDiv {
     display: flex;
     justify-content: center;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 .feminineInput,
@@ -169,6 +170,10 @@ span.masculine {
 
 .remove {
     color: #fe5757;
+}
+
+.add:disabled {
+    color: #569c42;
 }
 
 .remove:disabled {
