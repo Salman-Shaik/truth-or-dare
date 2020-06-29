@@ -1,0 +1,38 @@
+html, body {
+    width: 100%;
+}
+
+h3 {
+    color: antiquewhite !important;
+    text-shadow: 2px 2px black !important;
+}
+
+h4{
+    cursor: pointer;
+}
+
+.notFound {
+    width: 45%;
+    margin-top: -10%;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gotoHome {
+    display: flex;
+    flex-direction: column;
+    color: antiquewhite;
+    text-shadow: 2px 2px darkslateblue;
+    text-align: center;
+}
+
+.material-icons {
+    font-size: 130px !important;
+    color: moccasin;
+    margin-top: 80%;
+    cursor: pointer;
+}
