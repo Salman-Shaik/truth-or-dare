@@ -1,5 +1,5 @@
 const createNameInput = (name, gender) => {
-    let nameInput = document.createElement("input");
+    let nameInput = createElement("input");
     nameInput.type = "text";
     nameInput.placeholder = "Enter First Name";
     nameInput.value = !!name ? name : "";
@@ -14,9 +14,9 @@ const checkCheckBox = (gender, checkbox) => {
 };
 
 const createGenderSwitch = (gender) => {
-    let switchElem = document.createElement("label");
-    let checkbox = document.createElement("input");
-    let span = document.createElement("span");
+    let switchElem = createElement("label");
+    let checkbox = createElement("input");
+    let span = createElement("span");
     switchElem.className = "switch";
     checkbox.type = "checkbox";
     checkCheckBox(gender, checkbox);
@@ -40,13 +40,13 @@ function setGenderSpanAttributes(gender, span) {
 }
 
 const createGenderSpan = (gender) => {
-    let span = document.createElement("span");
+    let span = createElement("span");
     setGenderSpanAttributes(gender, span);
     return span;
 };
 
 const createNameSection = (name, gender) => {
-    let nameDiv = document.createElement("div");
+    let nameDiv = createElement("div");
     nameDiv.className = "nameSection";
     let nameInput = createNameInput(name, gender);
     let switchElem = createGenderSwitch(gender);
@@ -64,7 +64,7 @@ function appendInitialNameSections() {
 }
 
 const showNames = () => {
-    let namesDiv = document.querySelector(".names");
+    let namesDiv = getElement(".names");
     appendInitialNameSections();
     showElement(namesDiv);
 };
@@ -74,7 +74,7 @@ const showForm = () => {
 };
 
 const addNameSection = (name, gender) => {
-    let namesDiv = document.querySelector(".names");
+    let namesDiv = getElement(".names");
     let nameSection = createNameSection(name, gender);
     let numberOfChilds = namesDiv.childElementCount;
     if (numberOfChilds <= 11) {
@@ -86,7 +86,7 @@ const addNameSection = (name, gender) => {
 };
 
 const removeNameSection = ({target}) => {
-    let namesDiv = document.querySelector(".names");
+    let namesDiv = getElement(".names");
     let numberOfChilds = namesDiv.childElementCount;
     if (numberOfChilds > 3) {
         namesDiv.removeChild(namesDiv.children[numberOfChilds - 2]);
@@ -137,7 +137,7 @@ const areAllNamesValid = (body) =>
     body.every((b) => b.participantName.match("^[A-Za-z]{1,10}$"));
 
 const generateBody = () => {
-    const nameSections = document.querySelectorAll(".nameSection");
+    const nameSections = getAllElements(".nameSection");
     const body = [];
     nameSections.forEach((n) => {
         body.push({
@@ -164,17 +164,17 @@ const saveParticipantsAndShowMode = async () => {
 };
 
 const enableRemoveButton = () => {
-    const removeButton = document.querySelector(".remove");
+    const removeButton = getElement(".remove");
     removeButton.disabled = false;
 };
 
 const disableAddButton = () => {
-    const removeButton = document.querySelector(".add");
+    const removeButton = getElement(".add");
     removeButton.disabled = true;
 };
 
 const enableAddButton = () => {
-    const removeButton = document.querySelector(".add");
+    const removeButton = getElement(".add");
     removeButton.disabled = false;
 };
 
@@ -184,10 +184,10 @@ const capitalize = ({target}) => {
 };
 
 const addEventListeners = () => {
-    let addButton = document.querySelector(".add");
-    let removeButton = document.querySelector(".remove");
-    let nextButton = document.querySelector(".next");
-    const names = document.querySelectorAll(".nameSection");
+    let addButton = getElement(".add");
+    let removeButton = getElement(".remove");
+    let nextButton = getElement(".next");
+    const names = getAllElements(".nameSection");
     addButton.onclick = () => {
         enableRemoveButton();
         addNameSection();
@@ -197,11 +197,7 @@ const addEventListeners = () => {
     names.forEach(name => name.onchange = capitalize)
 };
 
-const fillParticipantsInDefaultSections = (
-    participants,
-    nameSection,
-    index
-) => {
+const fillParticipantsInDefaultSections = (participants, nameSection, index) => {
     const gender = participants[index].gender;
     const nameInput = nameSection.firstChild;
     const checkbox = nameSection.childNodes[1].firstChild;
@@ -219,7 +215,7 @@ const fillParticipantsInNewSections = (p, index) => {
 };
 
 const fillDataInNameSections = (participants) => {
-    const nameSections = document.querySelectorAll(".nameSection");
+    const nameSections = getAllElements(".nameSection");
     if (participants.length !== 0) {
         nameSections.forEach((n, i) =>
             fillParticipantsInDefaultSections(participants, n, i)

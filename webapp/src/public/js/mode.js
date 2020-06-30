@@ -1,5 +1,5 @@
 const getMode = () => {
-  const modeDropdown = document.querySelector(".modeDropDown");
+  const modeDropdown = getElement(".modeDropDown");
   return { mode: modeDropdown.value };
 };
 
@@ -15,14 +15,14 @@ const updateMode = async () => {
 };
 
 const addEventListeners = () => {
-  const nextButton = document.querySelector(".next");
-  const prevButton = document.querySelector(".prev");
+  const nextButton = getElement(".next");
+  const prevButton = getElement(".prev");
   nextButton.onclick = updateMode;
   prevButton.onclick = goToPreviousPage;
 };
 
 const showMode = () => {
-  let modeDiv = document.querySelector(".mode");
+  let modeDiv = getElement(".mode");
   showElement(modeDiv);
 };
 

@@ -1,17 +1,17 @@
 const fetchParticipants = async () =>
     await fetch("/participants")
-        .then((res) => res.text())
+        .then((r) => r.text())
         .then((data) => JSON.parse(data))
         .catch((e) => showErrorAlert("Didn't Fetch, Please Try Again!"));
 
 const fetchTruth = async () =>
     await fetch("/truth")
-        .then((res) => res.text())
+        .then((r) => r.text())
         .catch((e) => showErrorAlert("Didn't Fetch, Please Try Again!"));
 
 const fetchDare = async () =>
     await fetch("/dare")
-        .then((res) => res.text())
+        .then((r) => r.text())
         .catch((e) => showErrorAlert("Didn't Fetch, Please Try Again!"));
 
 const saveParticipants = async (body) =>
@@ -20,7 +20,7 @@ const saveParticipants = async (body) =>
         method: "post",
         body: body,
     })
-        .then((res) => +res.status)
+        .then((r) => +r.status)
         .catch((e) => showErrorAlert("Didn't Save, Please Try Again!"));
 
 const saveMode = async (body) =>

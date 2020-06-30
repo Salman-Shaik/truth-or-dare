@@ -1,6 +1,6 @@
 let participants = [];
 const createNameButton = (participantName) => {
-    const button = document.createElement("button");
+    const button = createElement("button");
     button.className = "name";
     button.disabled = true;
     button.innerText = participantName;
@@ -8,7 +8,7 @@ const createNameButton = (participantName) => {
 };
 
 const fillNamesSections = (participants) => {
-    const nameSection = document.querySelector(".namesDiv");
+    const nameSection = getElement(".namesDiv");
     participants.forEach((p) =>
         nameSection.appendChild(createNameButton(p.participantName))
     );
@@ -38,14 +38,14 @@ const getNameButton = (participantName) => {
 };
 
 const displayName = (name) => {
-    const element = document.querySelector(".currentName");
+    const element = getElement(".currentName");
     element.value = name;
     element.innerText = name;
 };
 
 const insertTruthAndDare = (truth, dare) => {
-    const truthElement = document.querySelector(".truthQuestion");
-    const dareElement = document.querySelector(".dareQuestion");
+    const truthElement = getElement(".truthQuestion");
+    const dareElement = getElement(".dareQuestion");
     truthElement.innerHTML = `<p class="truth">${truth}</p>`;
     dareElement.innerHTML = `<p class="dare">${dare}</p>`;
 };
@@ -57,18 +57,18 @@ const getTruthAndDare = async () => {
 };
 
 const showCards = () => {
-    const cards = document.querySelector(".cards");
+    const cards = getElement(".cards");
     cards.style.visibility = "visible";
 };
 
 const hideCards = () => {
-    const cards = document.querySelector(".cards");
+    const cards = getElement(".cards");
     cards.style.visibility = "hidden";
 };
 
 const highlightParticipant = async (rp, index) => {
     const disableAllNameButtons = () => {
-        const names = document.querySelectorAll(".name");
+        const names = getAllElements(".name");
         names.forEach((n) => (n.disabled = true));
     };
 
@@ -101,21 +101,21 @@ const exitGame = async () => {
 };
 
 const addEventListeners = () => {
-    const rollButton = document.querySelector(".roll");
-    const exitButton = document.querySelector(".exit");
+    const rollButton = getElement(".roll");
+    const exitButton = getElement(".exit");
     rollButton.onclick = selectOneParticipant;
     exitButton.onclick = exitGame;
 };
 
 const createCurrentNameSpan = () => {
-    const span = document.createElement("span");
+    const span = createElement("span");
     span.innerHTML =
         'It\'s <input type="text" class="currentName" readonly> turn';
     return span;
 };
 
 const addAndShowCurrentNameSection = () => {
-    const main = document.querySelector("main");
+    const main = getElement("main");
     const span = createCurrentNameSpan();
     main.insertBefore(span, main.firstChild);
 };
