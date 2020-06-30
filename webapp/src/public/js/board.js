@@ -51,12 +51,8 @@ const insertTruthAndDare = (truth, dare) => {
 };
 
 const getTruthAndDare = async () => {
-    const truth = await fetch("/truth")
-        .then((res) => res.text())
-        .catch((e) => showErrorAlert("Didn't Fetch, Please Try Again!"));
-    const dare = await fetch("/dare")
-        .then((res) => res.text())
-        .catch((e) => showErrorAlert("Didn't Fetch, Please Try Again!"));
+    const truth = await fetchTruth();
+    const dare = await fetchDare();
     insertTruthAndDare(truth, dare);
 };
 
