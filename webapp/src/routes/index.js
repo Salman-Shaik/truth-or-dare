@@ -1,15 +1,8 @@
 const express = require("express");
 
-const {
-  getParticipants,
-  getModePage,
-  getBoardPage,
-  getHomePage,
-  getDare,
-  getTruth,
-} = require("../handlers/getHandlers");
-const { setParticipants, setMode } = require("../handlers/postHandlers");
-const { updateStatus, deleteGame } = require("../handlers/miscHandlers");
+const {getParticipants, getModePage, getBoardPage, getHomePage, getDare, getTruth} = require("../handlers/getHandlers");
+const {setParticipants, setMode} = require("../handlers/postHandlers");
+const {updateStatus, deleteGame} = require("../handlers/miscHandlers");
 
 const router = express.Router();
 
