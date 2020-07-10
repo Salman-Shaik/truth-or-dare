@@ -1,24 +1,26 @@
 doctype html
-head
-    meta(charset='UTF-8')
-    title Truth Or Dare : Something Different
-    link(rel='stylesheet' href='/css/index.css')
-    link(rel='stylesheet' href='/css/master.css')
-    link(rel='shortcut icon' type='image/jpg' href='/images/favicon.ico')
-    link(rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons')
-header
-    script(rel='script' src='/js/index.js')
-    script(rel='script' src='/js/common/methods.js')
-    script(rel='script' src='/js/common/networkCalls.js')
-    script(src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js")
-    h1 Truth &amp; Dare
-main
-    .nameForm
-        .errorAlert(style='visibility: hidden')
-            i.material-icons(style='font-size:30px;color: rgba(255, 0, 0, 0.75);') error_outline
-            span.errorMessage
-        section.names(style='display: none')
-            .buttonDiv
-                button.add(type='button') +
-                button.remove(type='button' disabled="true") -
-        button.next(type='submit') Next &gt;
+html
+    head
+        meta(charset='UTF-8')
+        title Truth Or Dare : Something Different
+        script(defer, rel='script', src='/js/index.js')
+        script(defer, rel='script', src='/js/common/methods.js')
+        script(defer, rel='script', src='/js/common/networkCalls.js')
+        script(defer, src='https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js')
+    body
+        header
+            h1 Truth & Dare
+        main
+            .nameForm
+                .errorAlert(style='visibility: hidden')
+                    i.material-icons(style='font-size:30px;color: rgba(255, 0, 0, 0.75);') error_outline
+                    span.errorMessage
+                section.names(style='display: none')
+                    .buttonDiv
+                        button.add(type='button') +
+                        button.remove(type='button', disabled='true') -
+                button.next(type='submit') Next >
+        link(rel='stylesheet', href='/css/index.css')
+        link(rel='stylesheet', href='/css/master.css')
+        link(rel='shortcut icon', type='image/jpg', href='/images/favicon.ico')
+        link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')

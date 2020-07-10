@@ -1,26 +1,28 @@
 doctype html
-head
-    meta(charset='UTF-8')
-    title Truth Or Dare : Something Different
-    link(rel='stylesheet' href='css/master.css')
-    link(rel='stylesheet' href='css/mode.css')
-    link(rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons')
-    link(rel='shortcut icon' type='image/jpg' href='images/favicon.ico')
-    script(rel='script' src='/js/common/networkCalls.js')
-    script(rel='script' src='js/mode.js')
-    script(rel='script' src='js/common/methods.js')
-header
-    h1 Truth &amp; Dare
-main
-    .errorAlert(style='visibility: hidden')
-        i.material-icons(style='font-size:30px;color: rgba(255, 0, 0, 0.75);') error_outline
-        span.errorMessage
-    section.mode(style='display: none')
-        select#mode.modeDropDown
-            option.default(value='default' selected='')  Select Mode
-            option(value='Funny') Funny &#x1F603;
-            option(value='Hot') Hot &#x1F609; (18+)
-            option(value='Super Hot') Super Hot &#x1F608;&#x1F336; (18+)
-    div.buttonsDiv
-        button.prev(type='submit') &lt; Previous
-        button.next(type='submit') Next &gt;
+html
+    head
+        meta(charset='UTF-8')
+        title Truth Or Dare : Something Different
+        script(defer, rel='script', src='/js/common/networkCalls.js')
+        script(defer, rel='script', src='js/mode.js')
+        script(defer, rel='script', src='js/common/methods.js')
+    body
+        header
+            h1 Truth & Dare
+        main
+            .errorAlert(style='visibility: hidden')
+                i.material-icons(style='font-size:30px;color: rgba(255, 0, 0, 0.75);') error_outline
+                span.errorMessage
+            section.mode(style='display: none')
+                select#mode.modeDropDown
+                    option.default(value='default', selected='')  Select Mode
+                    option(value='Funny') Funny 😃
+                    option(value='Hot') Hot 😉 (18+)
+                    option(value='Super Hot') Super Hot 😈🌶 (18+)
+            .buttonsDiv
+                button.prev(type='submit') < Previous
+                button.next(type='submit') Next >
+        link(rel='stylesheet', href='css/master.css')
+        link(rel='stylesheet', href='css/mode.css')
+        link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
+        link(rel='shortcut icon', type='image/jpg', href='images/favicon.ico')
