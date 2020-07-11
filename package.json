@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "./start.sh",
+    "start": "node src/server.js",
     "watch": "node_modules/.bin/npm run build:development -- -w",
     "build": "node_modules/.bin/npm run build:development",
     "build:development": "webpack --config src/webapp/webpack/webpack.config.dev.js",
