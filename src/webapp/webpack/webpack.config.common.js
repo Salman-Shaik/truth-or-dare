@@ -6,7 +6,8 @@ module.exports = {
     entry: {
         "index": path.resolve('./src/webapp/public/js/index.js'),
         "mode": path.resolve('./src/webapp/public/js/mode.js'),
-        "board": path.resolve('./src/webapp/public/js/board.js')
+        "board": path.resolve('./src/webapp/public/js/board.js'),
+        "admin": path.resolve('./src/webapp/public/js/admin.js')
     },
 
     output: {

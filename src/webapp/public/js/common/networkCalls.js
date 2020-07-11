@@ -1,5 +1,11 @@
 import {showErrorAlert} from "./methods";
 
+export const fetchGames = async () =>
+    await fetch("/games")
+        .then((r) => r.text())
+        .then((data) => JSON.parse(data))
+        .catch((e) => showErrorAlert("Didn't Fetch, Please Try Again!"));
+
 export const fetchParticipants = async () =>
     await fetch("/participants")
         .then((r) => r.text())

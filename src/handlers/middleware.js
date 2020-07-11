@@ -4,11 +4,10 @@ const _ = require("lodash");
 const redirectToHomepageIfNoParticipants = (req, res, next) => {
     const {gameId} = req.cookies;
     const noParticipants = _.isEmpty(req.app.games.getParticipants(gameId));
-    if (
-        noParticipants &&
-        (req.url === "/board" || req.url === "/mode") &&
-        !req.app.active[gameId]
-    ) {
+    const isBoardOrModePage = req.url === "/board" || req.url === "/mode";
+    const isGameNotActive = !req.app.active[gameId];
+    const condition = noParticipants && isBoardOrModePage && isGameNotActive;
+    if (condition) {
         res.redirect("/");
         req.app.active[gameId] = false;
         return;

@@ -1,0 +1,56 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 100vh;
+    background-color: #222222;
+    font-family: Avenir, serif;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    height: 30vh;
+    width: 100%;
+    background-image: none;
+}
+
+.logo {
+    width: 25%;
+    margin-top: -4%;
+    align-self: center;
+}
+
+#games {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#games td, #games th {
+    border: 1px solid  #FAC6DC;
+    padding: 8px;
+}
+
+#games tr:nth-child(even){
+    background-color: #222222;
+    color: #92ee58;
+}
+
+#games tr:nth-child(odd){
+    background-color: #222222;
+    color: #fe5757;
+}
+
+#games tr:hover {
+    background-color: rgb(59, 59, 59);
+}
+
+#games th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    background-color: #222222;
+    color: #8ffcff;
+}

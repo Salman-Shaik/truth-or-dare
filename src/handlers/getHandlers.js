@@ -21,7 +21,9 @@ const getDare = (req, res) => {
 const getHomePage = (req, res) => res.render("index", {title: "Express"});
 const getModePage = (req, res) => res.render("mode", {title: "Express"});
 const getBoardPage = (req, res) => res.render("board", {title: "Express"});
+const getAdminPage = (req, res) => res.render("admin", {title: "Express"});
 const getParticipants = (req, res) => res.send(req.app.games.getParticipants(req.cookies.gameId));
+const getGames = (req, res) => res.send(req.app.games);
 
 module.exports = {
     getTruth,
@@ -29,5 +31,7 @@ module.exports = {
     getHomePage,
     getBoardPage,
     getModePage,
+    getAdminPage,
     getParticipants,
+    getGames
 };
