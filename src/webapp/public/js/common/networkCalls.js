@@ -1,20 +1,22 @@
-const fetchParticipants = async () =>
+import {showErrorAlert} from "./methods";
+
+export const fetchParticipants = async () =>
     await fetch("/participants")
         .then((r) => r.text())
         .then((data) => JSON.parse(data))
         .catch((e) => showErrorAlert("Didn't Fetch, Please Try Again!"));
 
-const fetchTruth = async () =>
+export const fetchTruth = async () =>
     await fetch("/truth")
         .then((r) => r.text())
         .catch((e) => showErrorAlert("Didn't Fetch, Please Try Again!"));
 
-const fetchDare = async () =>
+export const fetchDare = async () =>
     await fetch("/dare")
         .then((r) => r.text())
         .catch((e) => showErrorAlert("Didn't Fetch, Please Try Again!"));
 
-const saveParticipants = async (body) =>
+export const saveParticipants = async (body) =>
     await fetch("/participants", {
         headers: {"Content-Type": "application/json"},
         method: "post",
@@ -23,7 +25,7 @@ const saveParticipants = async (body) =>
         .then((r) => +r.status)
         .catch((e) => showErrorAlert("Didn't Save, Please Try Again!"));
 
-const saveMode = async (body) =>
+export const saveMode = async (body) =>
     await fetch("mode", {
         headers: {"Content-Type": "application/json"},
         method: "post",
@@ -32,13 +34,13 @@ const saveMode = async (body) =>
         .then((r) => +r.status)
         .catch((e) => showErrorAlert("Didn't Save, Please Try Again!"));
 
-const deleteGame = async () =>
+export const deleteGame = async () =>
     await fetch("/game", {
         headers: {"Content-Type": "application/json"},
         method: "delete",
     }).catch((e) => showErrorAlert("Didn't Delete, Please Try Again!"));
 
-const updateGameStatus = async (status) =>
+export const updateGameStatus = async (status) =>
     await fetch("/status", {
         headers: {"Content-Type": "application/json"},
         method: "put",

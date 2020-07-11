@@ -3,21 +3,28 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node webapp/server.js",
-    "start:watch": "nodemon --ignore '*.json' webapp/server.js"
+    "start": "./start.sh",
+    "watch": "node_modules/.bin/npm run build:development -- -w",
+    "build": "node_modules/.bin/npm run build:development",
+    "build:development": "webpack --config src/webapp/webpack/webpack.config.dev.js",
+    "start:watch": "nodemon --ignore '*.json' src/server.js"
   },
   "dependencies": {
     "cookie-parser": "^1.4.5",
     "debug": "~4.1.1",
     "express": "~4.17.1",
     "http-errors": "~1.7.3",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "morgan": "~1.10.0",
-    "npm": "^6.14.5",
+    "npm": "^6.14.6",
     "pug": "^2.0.4",
     "uuid": "^7.0.3"
   },
   "devDependencies": {
-    "prettier": "2.0.5"
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "prettier": "2.0.5",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
   }
 }

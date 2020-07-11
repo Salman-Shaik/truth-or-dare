@@ -1,8 +1,8 @@
 const http = require("http");
-const app = require("./src/app.js");
-const Games = require("./src/models/Games.js");
-const truths = require("./src/data/truths.json");
-const dares = require("./src/data/dares.json");
+const app = require("./app.js");
+const Games = require("./models/Games.js");
+const truths = require("./data/truths.json");
+const dares = require("./data/dares.json");
 
 app.initialize(new Games(), truths, dares);
 

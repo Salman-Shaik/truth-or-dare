@@ -1,3 +1,6 @@
+import {createElement, getAllElements, getElement, sleep} from "./common/methods";
+import {deleteGame, fetchDare, fetchParticipants, fetchTruth, updateGameStatus} from "./common/networkCalls";
+
 let participants = [];
 const createNameButton = (participantName) => {
     const button = createElement("button");

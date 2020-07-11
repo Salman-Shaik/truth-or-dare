@@ -1,3 +1,6 @@
+import {getElement, showElement} from "./common/methods";
+import {saveMode} from "./common/networkCalls";
+
 const getMode = () => {
     const modeDropdown = getElement(".modeDropDown");
     return {mode: modeDropdown.value};

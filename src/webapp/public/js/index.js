@@ -1,3 +1,6 @@
+import {createElement, getAllElements, getElement, showElement, showErrorAlert,} from './common/methods'
+import {fetchParticipants, saveParticipants} from "./common/networkCalls";
+
 const createNameInput = (name, gender) => {
     let nameInput = createElement("input");
     nameInput.type = "text";
@@ -29,7 +32,7 @@ const createGenderSwitch = (gender) => {
 
 const isFemale = (gender) => gender === "F";
 
-function setGenderSpanAttributes(gender, span) {
+const setGenderSpanAttributes = (gender, span) => {
     if (isFemale(gender)) {
         span.innerText = "♀";
         span.className = "feminine";
@@ -37,7 +40,7 @@ function setGenderSpanAttributes(gender, span) {
         span.className = "masculine";
         span.innerText = "♂";
     }
-}
+};
 
 const createGenderSpan = (gender) => {
     let span = createElement("span");

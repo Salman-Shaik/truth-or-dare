@@ -20,14 +20,14 @@ app.initialize = (game, truths, dares) => {
     app.active = [];
 };
 
-app.set("views", path.join(__dirname, "public/views"));
+app.set("views", path.join(__dirname, "webapp/public/views"));
 app.set("view engine", "pug");
 
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "webapp/public")));
 app.use(redirectToHomepageIfNoParticipants);
 app.use(redirectToBoardIfGameIsActive);
 app.use("/", router);
