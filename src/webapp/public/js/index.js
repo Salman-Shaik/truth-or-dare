@@ -35,7 +35,6 @@ const createGenderSwitch = (gender) => {
 };
 
 const isFemale = (gender) => gender === "F";
-
 const setGenderSpanAttributes = (gender, span) => {
     if (isFemale(gender)) {
         span.innerText = "♀";

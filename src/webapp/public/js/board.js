@@ -132,7 +132,6 @@ const onload = async () => {
 };
 
 const onUnload = async () => await exitGame();
-
 window.onload = onload;
 window.onunload = onUnload;
 

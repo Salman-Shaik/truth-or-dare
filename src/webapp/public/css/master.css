@@ -14,7 +14,7 @@ body {
 }
 
 header {
-  height: 20vh;
+  height: 23vh;
   text-align: center;
 
   display: flex;
@@ -28,7 +28,7 @@ header {
 
 h1 {
   color: #222222;
-  text-shadow: 2px 2px lightgoldenrodyellow;
+  text-shadow: 2px 2px #FFD4B3;
 }
 
 a {
