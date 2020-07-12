@@ -1,5 +1,7 @@
+import {getErrorMessage} from "./ElementLibrary";
+
 export const showErrorAlert = (message) => {
-    const errorMessage = getElement(".errorMessage");
+    const errorMessage = getErrorMessage();
     errorMessage.innerHTML = message;
     errorMessage.parentElement.style.visibility = "visible";
 };

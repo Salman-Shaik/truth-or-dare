@@ -1,5 +1,7 @@
-import {createElement, getAllElements, getElement, showElement, showErrorAlert,} from './common/methods'
+import {getAddButton, getAllNameSections, getNamesDiv, getNextButton, getRemoveButton} from "./common/ElementLibrary";
+import {createElement, showElement, showErrorAlert,} from './common/methods'
 import {fetchParticipants, saveParticipants} from "./common/networkCalls";
+import _ from 'lodash';
 
 const createNameInput = (name, gender) => {
     let nameInput = createElement("input");
@@ -13,7 +15,9 @@ const createNameInput = (name, gender) => {
 };
 
 const checkCheckBox = (gender, checkbox) => {
-    if (isFemale(gender)) checkbox.checked = true;
+    if (isFemale(gender)) {
+        checkbox.checked = true;
+    }
 };
 
 const createGenderSwitch = (gender) => {
@@ -61,23 +65,21 @@ const createNameSection = (name, gender) => {
     return nameDiv;
 };
 
-function appendInitialNameSections() {
+const appendInitialNameSections = () => {
     addNameSection();
     addNameSection();
-}
+};
 
 const showNames = () => {
-    let namesDiv = getElement(".names");
+    let namesDiv = getNamesDiv();
     appendInitialNameSections();
     showElement(namesDiv);
 };
 
-const showForm = () => {
-    showNames();
-};
+const showForm = () => showNames();
 
 const addNameSection = (name, gender) => {
-    let namesDiv = getElement(".names");
+    let namesDiv = getNamesDiv();
     let nameSection = createNameSection(name, gender);
     let numberOfChilds = namesDiv.childElementCount;
     if (numberOfChilds <= 11) {
@@ -89,7 +91,7 @@ const addNameSection = (name, gender) => {
 };
 
 const removeNameSection = ({target}) => {
-    let namesDiv = getElement(".names");
+    let namesDiv = getNamesDiv();
     let numberOfChilds = namesDiv.childElementCount;
     if (numberOfChilds > 3) {
         namesDiv.removeChild(namesDiv.children[numberOfChilds - 2]);
@@ -132,15 +134,12 @@ const changeInputColor = ({target}) => {
     changeColor(nameInput, genderSpan, target.checked);
 };
 
-const isChecked = (element) =>
-    element.children[1].querySelector("input").checked;
-const isBodyEmpty = (body) =>
-    !body.every((b) => b.participantName !== "" && b.gender !== "");
-const areAllNamesValid = (body) =>
-    body.every((b) => b.participantName.match("^[A-Za-z]{1,10}$"));
+const isChecked = (element) => element.children[1].querySelector("input").checked;
+const isBodyEmpty = (body) => !body.every((b) => b.participantName !== "" && b.gender !== "");
+const areAllNamesValid = (body) => body.every((b) => b.participantName.match("^[A-Za-z]{1,10}$"));
 
 const generateBody = () => {
-    const nameSections = getAllElements(".nameSection");
+    const nameSections = getAllNameSections();
     const body = [];
     nameSections.forEach((n) => {
         body.push({
@@ -148,10 +147,12 @@ const generateBody = () => {
             gender: isChecked(n) ? "F" : "M",
         });
     });
-    if (isBodyEmpty(body))
+    if (isBodyEmpty(body)) {
         throw new SyntaxError("All The Fields Should Be Filled");
-    if (!areAllNamesValid(body))
+    }
+    if (!areAllNamesValid(body)) {
         throw new SyntaxError("All The Names Should Be <=10");
+    }
     return JSON.stringify(body);
 };
 
@@ -166,31 +167,16 @@ const saveParticipantsAndShowMode = async () => {
     if (status === 201) window.location.href = "/mode";
 };
 
-const enableRemoveButton = () => {
-    const removeButton = getElement(".remove");
-    removeButton.disabled = false;
-};
-
-const disableAddButton = () => {
-    const removeButton = getElement(".add");
-    removeButton.disabled = true;
-};
-
-const enableAddButton = () => {
-    const removeButton = getElement(".add");
-    removeButton.disabled = false;
-};
-
-const capitalize = ({target}) => {
-    console.log(_.capitalize(target.value));
-    target.value = _.capitalize(target.value);
-};
+const enableRemoveButton = () => getRemoveButton().disabled = false;
+const disableAddButton = () => getAddButton().disabled = true;
+const enableAddButton = () => getAddButton().disabled = false;
+const capitalize = ({target}) => target.value = _.capitalize(target.value);
 
 const addEventListeners = () => {
-    let addButton = getElement(".add");
-    let removeButton = getElement(".remove");
-    let nextButton = getElement(".next");
-    const names = getAllElements(".nameSection");
+    let addButton = getAddButton();
+    let removeButton = getRemoveButton();
+    let nextButton = getNextButton();
+    const names = getAllNameSections();
     addButton.onclick = () => {
         enableRemoveButton();
         addNameSection();
@@ -218,7 +204,7 @@ const fillParticipantsInNewSections = (p, index) => {
 };
 
 const fillDataInNameSections = (participants) => {
-    const nameSections = getAllElements(".nameSection");
+    const nameSections = getAllNameSections();
     if (participants.length !== 0) {
         nameSections.forEach((n, i) =>
             fillParticipantsInDefaultSections(participants, n, i)

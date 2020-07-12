@@ -1,4 +1,12 @@
-import {createElement, getAllElements, getElement, sleep} from "./common/methods";
+import {
+    getCards,
+    getCurrentName,
+    getDareElement, getExitButton, getMain,
+    getNames,
+    getNameSection, getRollButton,
+    getTruthElement
+} from "./common/ElementLibrary";
+import {createElement, sleep} from "./common/methods";
 import {deleteGame, fetchDare, fetchParticipants, fetchTruth, updateGameStatus} from "./common/networkCalls";
 
 let participants = [];
@@ -11,7 +19,7 @@ const createNameButton = (participantName) => {
 };
 
 const fillNamesSections = (participants) => {
-    const nameSection = getElement(".namesDiv");
+    const nameSection = getNameSection();
     participants.forEach((p) =>
         nameSection.appendChild(createNameButton(p.participantName))
     );
@@ -41,16 +49,14 @@ const getNameButton = (participantName) => {
 };
 
 const displayName = (name) => {
-    const element = getElement(".currentName");
+    const element = getCurrentName();
     element.value = name;
     element.innerText = name;
 };
 
 const insertTruthAndDare = (truth, dare) => {
-    const truthElement = getElement(".truthQuestion");
-    const dareElement = getElement(".dareQuestion");
-    truthElement.innerHTML = `<p class="truth">${truth}</p>`;
-    dareElement.innerHTML = `<p class="dare">${dare}</p>`;
+    getTruthElement().innerHTML = `<p class="truth">${truth}</p>`;
+    getDareElement().innerHTML = `<p class="dare">${dare}</p>`;
 };
 
 const getTruthAndDare = async () => {
@@ -59,19 +65,12 @@ const getTruthAndDare = async () => {
     insertTruthAndDare(truth, dare);
 };
 
-const showCards = () => {
-    const cards = getElement(".cards");
-    cards.style.visibility = "visible";
-};
-
-const hideCards = () => {
-    const cards = getElement(".cards");
-    cards.style.visibility = "hidden";
-};
+const showCards = () => getCards().style.visibility = "visible";
+const hideCards = () => getCards().style.visibility = "hidden";
 
 const highlightParticipant = async (rp, index) => {
     const disableAllNameButtons = () => {
-        const names = getAllElements(".name");
+        const names = getNames();
         names.forEach((n) => (n.disabled = true));
     };
 
@@ -104,10 +103,8 @@ const exitGame = async () => {
 };
 
 const addEventListeners = () => {
-    const rollButton = getElement(".roll");
-    const exitButton = getElement(".exit");
-    rollButton.onclick = selectOneParticipant;
-    exitButton.onclick = exitGame;
+    getRollButton().onclick = selectOneParticipant;
+    getExitButton().onclick = exitGame;
 };
 
 const createCurrentNameSpan = () => {
@@ -118,14 +115,12 @@ const createCurrentNameSpan = () => {
 };
 
 const addAndShowCurrentNameSection = () => {
-    const main = getElement("main");
+    const main = getMain();
     const span = createCurrentNameSpan();
     main.insertBefore(span, main.firstChild);
 };
 
-const setGameStatus = async (status) => {
-    await updateGameStatus(status);
-};
+const setGameStatus = async (status) => await updateGameStatus(status);
 
 const onload = async () => {
     addAndShowCurrentNameSection();

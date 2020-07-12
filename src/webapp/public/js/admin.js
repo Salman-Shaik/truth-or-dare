@@ -1,5 +1,6 @@
 import {createHeadingsRow, createRow, createTable} from "./common/ElementCreator";
-import {getElement, parseGames} from "./common/methods";
+import {getGamesDiv} from "./common/ElementLibrary";
+import {parseGames} from "./common/methods";
 import {fetchGames} from "./common/networkCalls";
 
 const createGamesTable = (games) => {
@@ -14,8 +15,7 @@ const createGamesTable = (games) => {
 const assignTables = games => {
     const parsedGames = parseGames(games);
     const gamesTable = createGamesTable(parsedGames);
-    const gamesDiv = getElement('.gamesDiv');
-    gamesDiv.appendChild(gamesTable);
+    getGamesDiv().appendChild(gamesTable);
 };
 
 const showGames = (games) => {
