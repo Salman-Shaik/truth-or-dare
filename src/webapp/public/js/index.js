@@ -216,6 +216,7 @@ const fillDataInNameSections = (participants) => {
 
 const showData = async () => {
     const participants = await fetchParticipants();
+    console.log(participants);
     fillDataInNameSections(participants);
 };
 

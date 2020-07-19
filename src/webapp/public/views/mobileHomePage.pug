@@ -1,0 +1,23 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8',   name='description', content="The Good'ol Truth or Dare game but a online version, what are waiting for click away.")
+        title Truth Or Dare : Something Different
+        link(rel='stylesheet', href='/css/mobile/index.css')
+        link(rel='stylesheet', href='/css/mobile/master.css')
+        link(rel='shortcut icon', type='image/jpg', href='/images/favicon.ico')
+        script(defer, rel='script', src='/build/js/index.js')
+    body
+        header
+            h1 Truth & Dare
+        main
+            .nameForm
+                .errorAlert(style='visibility: hidden')
+                    i.material-icons(style='font-size:50px;color: rgba(255, 0, 0, 0.75);') error_outline
+                    span.errorMessage
+                section.names(style='display: none')
+                    .buttonDiv
+                        button.add(type='button') +
+                        button.remove(type='button', disabled='true') -
+                button.next(type='submit') Next >
+        link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')

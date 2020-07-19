@@ -1,0 +1,283 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 100vh;
+    background-color: #222222;
+    font-family: Avenir, serif;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    height: 30vh;
+    width: 100%;
+    background-image: none;
+    margin-top: -8%;
+}
+
+.logo {
+    width: 45%;
+    align-self: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 70vh;
+    margin-top: -3%;
+}
+
+.namesDiv {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+
+    align-items: center;
+    justify-content: space-around;
+    /*width: 100%;*/
+}
+
+.namesDiv > button:first-child:nth-last-child(2),
+.namesDiv > button:first-child:nth-last-child(2) ~ button,
+.namesDiv > button:first-child:nth-last-child(3),
+.namesDiv > button:first-child:nth-last-child(3) ~ button {
+    flex: 0 100%;
+}
+
+.namesDiv > button:first-child:nth-last-child(4),
+.namesDiv > button:first-child:nth-last-child(4) ~ button,
+.namesDiv > button:first-child:nth-last-child(6),
+.namesDiv > button:first-child:nth-last-child(6) ~ button {
+    flex: 1 48%;
+}
+
+.namesDiv > button:first-child:nth-last-child(5),
+.namesDiv > button:first-child:nth-last-child(5) ~ button,
+.namesDiv > button:first-child:nth-last-child(7),
+.namesDiv > button:first-child:nth-last-child(7) ~ button,
+.namesDiv > button:first-child:nth-last-child(9),
+.namesDiv > button:first-child:nth-last-child(9) ~ button {
+    flex: 0 47%;
+}
+
+.namesDiv > button:first-child:nth-last-child(8),
+.namesDiv > button:first-child:nth-last-child(8) ~ button,
+.namesDiv > button:first-child:nth-last-child(10),
+.namesDiv > button:first-child:nth-last-child(10) ~ button {
+    flex: 1 47%;
+}
+
+.name,
+.name:disabled {
+    height: 4.5vh;
+    font-size: 220%;
+    background-color: #222222;
+    margin: 2% 1%;
+}
+
+.name:disabled {
+    color: #a590ff;
+    border: 4px solid transparent;
+    border-image: linear-gradient(to right top, #FF2740, #8365FF, #8365FF, #FF2740);
+    border-image-slice: 1;
+}
+
+.name:enabled {
+    color: #00C9FF;
+    border: 4px solid transparent;
+    border-image: linear-gradient(to right top, #00FF10, #00C9FF, #00C9FF, #00FF10);
+    border-image-slice: 1;
+    transform: scale(1.16, 1.16);
+}
+
+.roll {
+    margin-top: 2%;
+    width: 20%;
+}
+
+span {
+    width: 100%;
+    color: #92ee58;
+    font-size: 220%;
+    margin: 7% 1% 1% 1%;
+}
+
+.currentName {
+    height: 3vh;
+    width: 13%;
+    border: none;
+    background-color: #222222;
+    text-align: center;
+    font-size: 100%;
+    color: #00C9FF;
+    padding: 0;
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 520px;
+    height: 700px;
+    perspective: 1000px;
+    margin: 5% 0;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #222222;
+    color: black;
+    box-shadow: 0 4px 8px 0;
+}
+
+.flip-card-back {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #222222;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.cards {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    cursor: pointer;
+}
+
+.cardLogo {
+    width: 300px;
+    height: 300px;
+    align-self: center;
+    margin-top: 8%;
+}
+
+.cardHeader {
+    margin-right: 2%;
+    align-self: flex-end;
+    text-align: right;
+    color: #e9cf00;
+    font-size: 218%;
+}
+
+.topHeader {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 120%;
+    margin-top: 3%;
+}
+
+.bottomHeader {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 120%;
+    transform: rotateX(180deg);
+    margin-bottom: 3%;
+}
+
+.truthCard {
+    box-shadow: 0 4px 8px 0 #92ee58;
+}
+
+.dareCard {
+    box-shadow: 0 4px 8px 0 #fe5757;
+}
+
+.truth {
+    color: #fe5757;
+}
+
+.dare {
+    color: #92ee58;
+}
+
+.truthQuestion,
+.dareQuestion {
+    font-size: 230%;
+    font-weight: bold;
+    margin: 0 5%;
+}
+
+.exit {
+    font-family: Avenir, serif;
+    font-size: 250%;
+    font-weight: lighter;
+
+    color: #fe5757;
+    background-color: #222222;
+
+    align-self: flex-end;
+
+    border: none;
+    border-radius: 5px;
+    margin: 2% 4%;
+    height: 5vh;
+    width: 3%;
+    cursor: pointer;
+}
+
+.bottomHeaderTitle, .topSymbol {
+    margin-left: 5%;
+}
+
+.topHeaderTitle, .bottomSymbol {
+    margin-right: 5%;
+}
+
+.close {
+    color: #fe5757;
+    background-color: rgba(34, 34, 34, 0);
+    font-family: Avenir, serif;
+    font-weight: lighter;
+    font-size: 250%;
+    align-self: flex-end;
+
+    border: none;
+    border-radius: 5px;
+    margin: 2% 4%;
+    height: 5vh;
+    width: 3%;
+    cursor: pointer;
+}

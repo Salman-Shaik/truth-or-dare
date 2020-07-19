@@ -3,7 +3,8 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const path = require("path");
 
-const router = require("./routes");
+const router = require("./routes/index");
+const {redirectToMobileUIFOrMobile} = require("./handlers/middleware");
 const {redirectToBoardIfGameIsActive} = require("./handlers/middleware");
 const {
     notFoundHandler,
@@ -28,6 +29,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "webapp/public")));
+app.use(redirectToMobileUIFOrMobile);
 app.use(redirectToHomepageIfNoParticipants);
 app.use(redirectToBoardIfGameIsActive);
 app.use("/", router);

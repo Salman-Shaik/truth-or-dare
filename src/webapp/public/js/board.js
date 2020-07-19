@@ -1,5 +1,5 @@
 import {
-    getCards,
+    getCards, getCloseButton,
     getCurrentName,
     getDareElement, getExitButton, getMain,
     getNames,
@@ -7,7 +7,13 @@ import {
     getTruthElement
 } from "./common/ElementLibrary";
 import {createElement, sleep} from "./common/methods";
-import {deleteGame, fetchDare, fetchParticipants, fetchTruth, updateGameStatus} from "./common/networkCalls";
+import {
+    deleteGame,
+    fetchDare,
+    fetchParticipants,
+    fetchTruth,
+    updateGameStatus
+} from "./common/networkCalls";
 
 let participants = [];
 const createNameButton = (participantName) => {
@@ -65,8 +71,15 @@ const getTruthAndDare = async () => {
     insertTruthAndDare(truth, dare);
 };
 
-const showCards = () => getCards().style.visibility = "visible";
-const hideCards = () => getCards().style.visibility = "hidden";
+const showCards = async () => {
+    getCards().style.display = "flex";
+    getCards().style.visibility = "visible";
+}
+
+const hideCards = async () => {
+    getCards().style.display = "none"
+    getCards().style.visibility = "hidden"
+}
 
 const highlightParticipant = async (rp, index) => {
     const disableAllNameButtons = () => {
@@ -75,7 +88,7 @@ const highlightParticipant = async (rp, index) => {
     };
 
     disableAllNameButtons();
-    hideCards();
+    await hideCards();
     const name = rp.participantName;
     const nameButton = getNameButton(name);
     nameButton.disabled = false;
@@ -83,11 +96,11 @@ const highlightParticipant = async (rp, index) => {
     if (index === 9) {
         displayName(name);
         await getTruthAndDare();
-        showCards();
+        await showCards();
     }
 };
 
-const selectOneParticipant = async ({target}) => {
+const selectOneParticipant = async (target) => {
     target.disabled = true;
     const randomParticipants = getRandomParticipants();
     for (let i = 0; i < randomParticipants.length; i++) {
@@ -102,9 +115,15 @@ const exitGame = async () => {
     window.location.reload();
 };
 
+const closeOverlay = async () => {
+    await hideCards();
+};
+
 const addEventListeners = () => {
     getRollButton().onclick = selectOneParticipant;
     getExitButton().onclick = exitGame;
+    const closeButton = getCloseButton();
+    if (!!closeButton) closeButton.onclick = closeOverlay;
 };
 
 const createCurrentNameSpan = () => {

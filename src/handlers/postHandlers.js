@@ -19,5 +19,5 @@ const setMode = (req, res) => {
 
 module.exports = {
     setParticipants,
-    setMode,
+    setMode
 };
