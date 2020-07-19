@@ -20,7 +20,7 @@ button[type="button"] {
     width: 11%;
     height: 4vh;
     font-size: 350%;
-    border-radius: 15px;
+    border-radius: 28px;
     margin: 2%;
     cursor: pointer;
     background-color: #222222;
@@ -118,7 +118,7 @@ span.masculine {
     font-size: 280%;
     font-family: "Avenir Next", serif;
     background-color: rgba(255, 255, 255, 0);
-    border-radius: 8px;
+    border-radius: 14px;
     border: 1px solid cornflowerblue;
     padding: 18px;
 }
