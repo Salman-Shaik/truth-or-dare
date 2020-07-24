@@ -1,4 +1,5 @@
 const express = require("express");
+const compression = require('compression');
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const path = require("path");
@@ -24,6 +25,7 @@ app.initialize = (game, truths, dares) => {
 app.set("views", path.join(__dirname, "webapp/public/views"));
 app.set("view engine", "pug");
 
+app.use(compression())
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));

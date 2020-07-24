@@ -1,4 +1,11 @@
-import {getAddButton, getAllNameSections, getNamesDiv, getNextButton, getRemoveButton} from "./common/ElementLibrary";
+import {
+    getAddButton,
+    getAllNameSections,
+    getBody,
+    getNamesDiv,
+    getNextButton,
+    getRemoveButton
+} from "./common/ElementLibrary";
 import {createElement, showElement, showErrorAlert,} from './common/methods'
 import {fetchParticipants, saveParticipants} from "./common/networkCalls";
 import _ from 'lodash';
@@ -171,18 +178,19 @@ const disableAddButton = () => getAddButton().disabled = true;
 const enableAddButton = () => getAddButton().disabled = false;
 const capitalize = ({target}) => target.value = _.capitalize(target.value);
 
+const addListenersForNames = nameSection => {
+    const nameInput = nameSection.firstChild;
+    nameInput.onchange = capitalize;
+};
+
 const addEventListeners = () => {
-    let addButton = getAddButton();
-    let removeButton = getRemoveButton();
-    let nextButton = getNextButton();
-    const names = getAllNameSections();
-    addButton.onclick = () => {
+    getAddButton().onclick = () => {
         enableRemoveButton();
         addNameSection();
     };
-    removeButton.onclick = removeNameSection;
-    nextButton.onclick = saveParticipantsAndShowMode;
-    names.forEach(name => name.onchange = capitalize)
+    getRemoveButton().onclick = removeNameSection;
+    getNextButton().onclick = saveParticipantsAndShowMode;
+    getAllNameSections().forEach(addListenersForNames);
 };
 
 const fillParticipantsInDefaultSections = (participants, nameSection, index) => {
@@ -216,7 +224,6 @@ const fillDataInNameSections = (participants) => {
 
 const showData = async () => {
     const participants = await fetchParticipants();
-    console.log(participants);
     fillDataInNameSections(participants);
 };
 

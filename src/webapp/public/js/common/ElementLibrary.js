@@ -14,6 +14,7 @@ export const getRollButton = () => getElement(".roll");
 export const getExitButton = () => getElement(".exit");
 export const getCloseButton = () => getElement(".close");
 export const getMain = () => getElement("main");
+export const getBody = () => getElement("body");
 export const getNames = () => getAllElements(".name");
 export const getCards = () => getElement(".cards");
 export const getDareElement = () => getElement(".dareQuestion");
