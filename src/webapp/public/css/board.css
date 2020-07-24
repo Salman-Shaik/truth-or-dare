@@ -49,14 +49,18 @@ main {
 
 .name:disabled {
     color: #a590ff;
-    border: 3px solid transparent;
+    border-style: solid;
+    border-width: 3px;
+    border-color: transparent;
     border-image: linear-gradient(to right top, #FF2740, #8365FF, #8365FF, #FF2740);
     border-image-slice: 1;
 }
 
 .name:enabled {
     color: #00C9FF;
-    border: 3px solid transparent;
+    border-style: solid;
+    border-width: 3px;
+    border-color: transparent;
     border-image: linear-gradient(to right top, #00FF10, #00C9FF, #00C9FF, #00FF10);
     border-image-slice: 1;
     transform: scale(1.16, 1.16);
