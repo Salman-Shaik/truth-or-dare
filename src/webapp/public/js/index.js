@@ -153,12 +153,8 @@ const generateBody = () => {
             gender: isChecked(n) ? "F" : "M",
         });
     });
-    if (isBodyEmpty(body)) {
-        throw new SyntaxError("All The Fields Should Be Filled");
-    }
-    if (!areAllNamesValid(body)) {
-        throw new SyntaxError("All The Names Should Be <=10");
-    }
+    if (isBodyEmpty(body)) throw new SyntaxError("All The Fields Should Be Filled");
+    if (!areAllNamesValid(body)) throw new SyntaxError("Fill Names without spaces and <=10 Chars");
     return JSON.stringify(body);
 };
 
