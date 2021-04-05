@@ -1,181 +1,187 @@
-body{
-
+body {
 }
 
 header {
-    background-image: linear-gradient(to right bottom, #ffd4b3, #ffb38b, #ff8d6f, #ff5f5f, #ff005c);
+  background-image: linear-gradient(
+    to right bottom,
+    #ffd4b3,
+    #ffb38b,
+    #ff8d6f,
+    #ff5f5f,
+    #ff005c
+  );
 }
 
 input:checked + .slider {
-    background-color: hotpink;
+  background-color: hotpink;
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px #2196f3;
+  box-shadow: 0 0 1px #2196f3;
 }
 
 input:checked + .slider:before {
-    -webkit-transform: translateX(40px);
-    -ms-transform: translateX(40px);
-    transform: translateX(40px);
+  -webkit-transform: translateX(40px);
+  -ms-transform: translateX(40px);
+  transform: translateX(40px);
 }
 
 button[type="button"] {
-    width: 11%;
-    height: 4vh;
-    font-size: 350%;
-    border-radius: 28px;
-    margin: 2%;
-    cursor: pointer;
-    background-color: #222222;
+  width: 11%;
+  height: 4vh;
+  font-size: 350%;
+  border-radius: 28px;
+  margin: 2%;
+  cursor: pointer;
+  background-color: #222222;
 }
 
 button[type="submit"] {
-    width: 98%;
-    margin-top: 2%;
-    margin-bottom: 4%;
+  width: 98%;
+  margin-top: 2%;
+  margin-bottom: 4%;
 }
 
 span.feminine,
 span.masculine {
-    border: none;
-    font-size: 380%;
-    font-family: Avenir, serif;
+  border: none;
+  font-size: 380%;
+  font-family: Avenir, serif;
 }
 
 .nameForm {
-    margin-top: 2%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .modeDropDown {
-    height: 5vh;
-    width: 30vh;
-    font-family: Avenir, serif;
-    font-size: 120%;
-    border: none;
-    background-color: lightgreen;
+  height: 5vh;
+  width: 30vh;
+  font-family: Avenir, serif;
+  font-size: 120%;
+  border: none;
+  background-color: lightgreen;
 }
 
 .names {
-    margin-top: 2%;
+  margin-top: 2%;
 }
 
 .switch {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 
-    width: 120px;
-    height: 70px;
-    margin: 0 4%;
+  width: 120px;
+  height: 70px;
+  margin: 0 4%;
 }
 
 .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .slider {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
-    position: absolute;
-    cursor: pointer;
-    background-color: cornflowerblue;
+  position: absolute;
+  cursor: pointer;
+  background-color: cornflowerblue;
 
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
-    height: 56px;
-    width: 56px;
+  height: 56px;
+  width: 56px;
 
-    left: 7px;
-    bottom: 7px;
+  left: 7px;
+  bottom: 7px;
 
-    position: absolute;
-    content: "";
+  position: absolute;
+  content: "";
 
-    background-color: white;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 /* Rounded sliders */
 .slider.round {
-    border-radius: 34px;
+  border-radius: 34px;
 }
 
 .slider.round:before {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 .nameInput {
-    width: 34vh;
-    height: 3.5vh;
-    font-size: 280%;
-    font-family: "Avenir Next", serif;
-    background-color: rgba(255, 255, 255, 0);
-    border-radius: 14px;
-    border: 1px solid cornflowerblue;
-    padding: 18px;
+  width: 34vh;
+  height: 3.5vh;
+  font-size: 280%;
+  font-family: "Avenir Next", serif;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 14px;
+  border: 1px solid cornflowerblue;
+  padding: 18px;
 }
 
 .nameInput::placeholder {
-    color: rgba(99, 168, 255, 0.67);
+  color: rgba(99, 168, 255, 0.67);
 }
 
 .nameSection {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    margin: 3% 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 3% 0;
 }
 
 .buttonDiv {
-    display: flex;
-    justify-content: center;
-    margin-top: 5%;
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
 }
 
 .feminineInput,
 .feminine {
-    border: 1px solid hotpink;
-    color: hotpink;
+  border: 1px solid hotpink;
+  color: hotpink;
 }
 
 .feminineInput::placeholder {
-    color: rgba(255, 105, 180, 0.62);
+  color: rgba(255, 105, 180, 0.62);
 }
 
 .masculineInput,
 .masculine {
-    border: 1px solid cornflowerblue;
-    color: cornflowerblue;
+  border: 1px solid cornflowerblue;
+  color: cornflowerblue;
 }
 
 .masculineInput::placeholder {
-    color: rgba(99, 168, 255, 0.63);
+  color: rgba(99, 168, 255, 0.63);
 }
 
 .add {
-    color: #92ee58;
+  color: #92ee58;
 }
 
 .remove {
-    color: #fe5757;
+  color: #fe5757;
 }
 
 .add:disabled {
-    color: #569c42;
+  color: #569c42;
 }
 
 .remove:disabled {
-    color: #a04848;
+  color: #a04848;
 }

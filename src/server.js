@@ -10,4 +10,4 @@ const PORT = process.env.PORT || 8000;
 
 let server = http.createServer(app);
 server.listen(PORT);
-console.log('\x1b[33m%s\x1b[0m',`Server is listening to ${PORT}`);
+console.log("\x1b[33m%s\x1b[0m", `Server is listening to ${PORT}`);

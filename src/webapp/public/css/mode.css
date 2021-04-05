@@ -1,26 +1,32 @@
 button {
-    width: 45%;
-    margin-top: 6%;
+  width: 45%;
+  margin-top: 6%;
 }
 
 header {
-    background-image: linear-gradient(to right bottom, #ffd4b3, #ffb38b, #ff8d6f, #ff5f5f, #ff005c);
+  background-image: linear-gradient(
+    to right bottom,
+    #ffd4b3,
+    #ffb38b,
+    #ff8d6f,
+    #ff5f5f,
+    #ff005c
+  );
 }
 
 .modeDropDown {
-    margin-top: 30%;
-    margin-bottom: 50%;
-    width: 110%;
-    height: 23%;
-    font-size: 140%;
-    border: none;
-    background-color: #8C8C8C;
-    border-radius: 6px;
+  margin-top: 30%;
+  margin-bottom: 50%;
+  width: 110%;
+  height: 23%;
+  font-size: 140%;
+  border: none;
+  background-color: #8c8c8c;
+  border-radius: 6px;
 }
 
 .buttonsDiv {
-    display: flex;
-    width: 30%;
-    justify-content: space-around;
+  display: flex;
+  width: 30%;
+  justify-content: space-around;
 }
-

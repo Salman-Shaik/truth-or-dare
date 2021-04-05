@@ -1,13 +1,15 @@
-'use strict';
+"use strict";
 
-const common = require('./webpack.config.common');
+const common = require("./webpack.config.common");
 
-console.log('[Webpack] Use dev configuration\n');
+console.log("[Webpack] Use dev configuration\n");
 
-module.exports = Object.assign({}, {
+module.exports = Object.assign(
+  {},
+  {
+    mode: "development",
 
-    mode: 'development',
-
-    devtool: '#source-map',
-
-}, common);
+    devtool: "#source-map",
+  },
+  common
+);

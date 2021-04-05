@@ -28,7 +28,7 @@ header {
 
 h1 {
   color: #222222;
-  text-shadow: 2px 2px #FFD4B3;
+  text-shadow: 2px 2px #ffd4b3;
 }
 
 a {
@@ -93,10 +93,12 @@ button[type="submit"] {
 
 @-webkit-keyframes glow {
   from {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e60073, 0 0 20px #e60073, 0 0 25px #e60073, 0 0 30px #e60073;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e60073, 0 0 20px #e60073,
+      0 0 25px #e60073, 0 0 30px #e60073;
   }
 
   to {
-    text-shadow: 0 0 10px #fff, 0 0 15px #ff4da6, 0 0 20px #ff4da6, 0 0 25px #ff4da6, 0 0 30px #ff4da6, 0 0 35px #ff4da6;
+    text-shadow: 0 0 10px #fff, 0 0 15px #ff4da6, 0 0 20px #ff4da6,
+      0 0 25px #ff4da6, 0 0 30px #ff4da6, 0 0 35px #ff4da6;
   }
 }

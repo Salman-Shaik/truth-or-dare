@@ -1,4 +1,4 @@
-import {getAllElements, getElement} from "./methods";
+import { getAllElements, getElement } from "./methods";
 
 export const getNextButton = () => getElement(".next");
 export const getPrevButton = () => getElement(".prev");
@@ -22,6 +22,6 @@ export const getTruthElement = () => getElement(".truthQuestion");
 export const getCurrentName = () => getElement(".currentName");
 export const getNameSection = () => getElement(".namesDiv");
 
-export const getGamesDiv = () => getElement('.gamesDiv');
+export const getGamesDiv = () => getElement(".gamesDiv");
 
 export const getErrorMessage = () => getElement(".errorMessage");
