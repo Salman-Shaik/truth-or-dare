@@ -7,12 +7,11 @@ const {
   getBoardPage,
   getAdminPage,
   getHomePage,
-} = require("../handlers/getHandlers");
-const {
   getParticipants,
   getGames,
   getDare,
   getTruth,
+  setGroupEdition,
 } = require("../handlers/getHandlers");
 const { setParticipants, setMode } = require("../handlers/postHandlers");
 const { updateStatus, deleteGame } = require("../handlers/miscHandlers");
@@ -30,6 +29,7 @@ router.get("/participants", getParticipants);
 router.get("/games", getGames);
 router.get("/truth", getTruth);
 router.get("/dare", getDare);
+router.get("/groupEdition", setGroupEdition);
 
 router.post("/participants", setParticipants);
 router.post("/mode", setMode);

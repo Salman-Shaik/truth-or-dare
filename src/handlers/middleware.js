@@ -23,12 +23,13 @@ const redirectToMobileUIForMobile = (req, res, next) => {
 };
 
 const redirectToHomepageIfNoParticipants = (req, res, next) => {
-  const { gameId } = req.cookies;
+  const { gameId, groupEdition } = req.cookies;
   const noParticipants = _.isEmpty(req.app.games.getParticipants(gameId));
   const isBoardOrModePage =
     req.url.includes("/board") || req.url.includes("/mode");
   const isGameNotActive = !req.app.active[gameId];
-  const condition = noParticipants && isBoardOrModePage && isGameNotActive;
+  const condition =
+    !groupEdition && noParticipants && isBoardOrModePage && isGameNotActive;
   if (condition) {
     res.redirect("/");
     req.app.active[gameId] = false;

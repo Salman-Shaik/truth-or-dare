@@ -1,6 +1,7 @@
 import { getAllElements, getElement } from "./methods";
 
 export const getNextButton = () => getElement(".next");
+export const getGroupEditionButton = () => getElement(".groupEdition");
 export const getPrevButton = () => getElement(".prev");
 export const getModeDiv = () => getElement(".mode");
 export const getModeDropdown = () => getElement(".modeDropDown");

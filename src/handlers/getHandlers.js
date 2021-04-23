@@ -1,11 +1,17 @@
 const MobileDetect = require("mobile-detect");
 const { getRandomItem } = require("../utils");
+const { v4: uuid } = require("uuid");
 
 const getTruth = (req, res) => {
   const { gameId } = req.cookies;
   const mode = req.app.games.getMode(gameId);
   const participants = req.app.games.getParticipants(req.cookies.gameId);
-  let randomParticipant = getRandomItem(participants).participantName;
+  let randomParticipant;
+  if (participants.length !== 0) {
+    randomParticipant = getRandomItem(participants).participantName;
+  } else {
+    randomParticipant = "the person next to you";
+  }
   const truths = req.app.truths[mode];
   let truth = getRandomItem(truths);
   if (truth.includes("[Participant]"))
@@ -42,6 +48,15 @@ const isDeviceMobile = (req, res) => {
     : res.send({ isMobile: false });
 };
 
+const setGroupEdition = (req, res) => {
+  const uniqueID = uuid();
+  res.cookie("groupEdition", true);
+  res.cookie("gameId", uniqueID);
+  const gameList = req.app.games;
+  gameList.setParticipants(uniqueID, []);
+  res.status(200).send("OK");
+};
+
 module.exports = {
   getTruth,
   getDare,
@@ -55,4 +70,5 @@ module.exports = {
   getParticipants,
   isDeviceMobile,
   getGames,
+  setGroupEdition,
 };

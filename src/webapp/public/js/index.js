@@ -2,12 +2,17 @@ import {
   getAddButton,
   getAllNameSections,
   getBody,
+  getGroupEditionButton,
   getNamesDiv,
   getNextButton,
   getRemoveButton,
 } from "./common/ElementLibrary";
 import { createElement, showElement, showErrorAlert } from "./common/methods";
-import { fetchParticipants, saveParticipants } from "./common/networkCalls";
+import {
+  enableGroupEdition,
+  fetchParticipants,
+  saveParticipants,
+} from "./common/networkCalls";
 import _ from "lodash";
 
 const createNameInput = (name, gender) => {
@@ -163,6 +168,8 @@ const generateBody = () => {
   return JSON.stringify(body);
 };
 
+const showMode = () => (window.location.href = "/mode");
+
 const saveParticipantsAndShowMode = async () => {
   let body;
   try {
@@ -171,7 +178,7 @@ const saveParticipantsAndShowMode = async () => {
     showErrorAlert(e.message);
   }
   const status = await saveParticipants(body);
-  if (status === 201) window.location.href = "/mode";
+  if (status === 201) showMode();
 };
 
 const enableRemoveButton = () => (getRemoveButton().disabled = false);
@@ -184,6 +191,11 @@ const addListenersForNames = (nameSection) => {
   nameInput.onchange = capitalize;
 };
 
+const enableGroupEditionAndShowMode = async () => {
+  const status = await enableGroupEdition();
+  if (status === 200) showMode();
+};
+
 const addEventListeners = () => {
   getAddButton().onclick = () => {
     enableRemoveButton();
@@ -191,6 +203,7 @@ const addEventListeners = () => {
   };
   getRemoveButton().onclick = removeNameSection;
   getNextButton().onclick = saveParticipantsAndShowMode;
+  getGroupEditionButton().onclick = enableGroupEditionAndShowMode;
   getAllNameSections().forEach(addListenersForNames);
 };
 
@@ -237,4 +250,5 @@ const onload = async () => {
   await showData();
   addEventListeners();
 };
+
 window.onload = onload;

@@ -1,5 +1,6 @@
 const deleteGame = (req, res) => {
   const { gameId } = req.cookies;
+  res.clearCookie("groupEdition");
   req.app.games.deleteData(gameId);
   res.send("Deleted");
 };

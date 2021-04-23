@@ -31,6 +31,13 @@ export const saveParticipants = async (body) =>
     .then((r) => +r.status)
     .catch((e) => showErrorAlert("Didn't Save, Please Try Again!"));
 
+export const enableGroupEdition = async () =>
+  await fetch("/groupEdition", {
+    method: "get",
+  })
+    .then((r) => +r.status)
+    .catch((e) => showErrorAlert("Didn't Save, Please Try Again!"));
+
 export const saveMode = async (body) =>
   await fetch("mode", {
     headers: { "Content-Type": "application/json" },

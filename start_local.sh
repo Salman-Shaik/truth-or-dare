@@ -9,6 +9,7 @@ printf "${BLUE}"
 printf "${bold}Step [1/2] : Build${normal}\n"
 printf "${NC}"
 
+prettier --write ./src
 npm run build
 
 printf "${BLUE}"

@@ -134,7 +134,7 @@ span {
 .flip-card-front {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   background-color: #222222;
   color: black;
   box-shadow: 0 4px 8px 0;
@@ -165,11 +165,11 @@ span {
 }
 
 .cardHeader {
-  margin-right: 2%;
-  align-self: flex-end;
-  text-align: right;
+  margin-top: 2%;
+  align-self: center;
+  text-align: center;
   color: #e9cf00;
-  font-size: 130%;
+  font-size: 500%;
 }
 
 .topHeader {

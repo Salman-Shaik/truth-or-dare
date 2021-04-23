@@ -118,6 +118,14 @@ const selectOneParticipant = async (target) => {
   target.disabled = false;
 };
 
+const showTruthAndDareCards = async (target) => {
+  target.disabled = true;
+  await hideCards();
+  await getTruthAndDare();
+  await showCards();
+  target.disabled = false;
+};
+
 const exitGame = async () => {
   await deleteGame();
   await setGameStatus(false);
@@ -130,6 +138,13 @@ const closeOverlay = async () => {
 
 const addEventListeners = () => {
   getRollButton().onclick = selectOneParticipant;
+  getExitButton().onclick = exitGame;
+  const closeButton = getCloseButton();
+  if (!!closeButton) closeButton.onclick = closeOverlay;
+};
+
+const addEventListenersForGroupEdition = () => {
+  getRollButton().onclick = showTruthAndDareCards;
   getExitButton().onclick = exitGame;
   const closeButton = getCloseButton();
   if (!!closeButton) closeButton.onclick = closeOverlay;
@@ -151,12 +166,15 @@ const addAndShowCurrentNameSection = () => {
 const setGameStatus = async (status) => await updateGameStatus(status);
 
 const onload = async () => {
-  addAndShowCurrentNameSection();
   participants = await showNames();
   if (participants.length !== 0) {
+    addAndShowCurrentNameSection();
     await setGameStatus(true);
+    addEventListeners();
+  } else {
+    await setGameStatus(true);
+    addEventListenersForGroupEdition();
   }
-  addEventListeners();
 };
 
 const onUnload = async () => await exitGame();
